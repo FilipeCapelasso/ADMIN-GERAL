@@ -100,7 +100,7 @@ function lista(){
   const ativas=C.filter(m=>m.ativo).length;
   $('#app').innerHTML=head()+`<div class="w">
   <div class="kp"><div><b>${ST.vendedores}</b><span>vendedores</span></div><div><b>${C.length}</b><span>motos no catálogo</span></div><div><b>${ativas}</b><span>ativas</span></div><div><b>${C.length-ativas}</b><span>suspensas</span></div></div>
-  <div class="fl"><button class="btn red sm" style="border-radius:999px;color:#fff;background:var(--r)" onclick="novo()">+ Nova moto</button><button onclick="syncSite()">⟳ Atualizar do site agora</button><button onclick="sincro()">↻ Sincronizar vendedores</button><button onclick="sair()">Sair</button></div>
+  <div class="fl"><button class="btn red sm" style="border-radius:999px;color:#fff;background:var(--r)" onclick="novo()">+ Nova moto</button><button onclick="syncSite()">⟳ Atualizar do site agora</button><button onclick="trocaSenha()">🔑 Alterar minha senha</button><button onclick="sincro()">↻ Sincronizar vendedores</button><button onclick="sair()">Sair</button></div>
   ${faixa()}
   <input id="bq" type="search" placeholder="Buscar moto" value="${esc(F.q)}" oninput="F.q=this.value;lista2()">
   <div class="fl">${cats.map(c=>`<button class="${F.cat===c?'on':''}" onclick="F.cat='${esc(c)}';lista()">${esc(c)}</button>`).join('')}</div>
@@ -126,6 +126,12 @@ async function sincro(){
   const{data,error}=await sb.rpc('mestre_sincronizar_todos');if(error)return toast('Erro: '+error.message);alert(data);load()}
 
 
+
+async function trocaSenha(){
+  const n=prompt('Nova senha de acesso do admin geral (mínimo 8 caracteres):');if(n===null)return;
+  if(n.length<8)return toast('A senha precisa ter pelo menos 8 caracteres');
+  if(prompt('Repita a nova senha:')!==n)return toast('As senhas não conferem');
+  const{error}=await sb.auth.updateUser({password:n});toast(error?'Erro: '+error.message:'Senha alterada com sucesso!')}
 
 /* ---------- navegação ---------- */
 function go(t){TAB=t;({catalogo:load,vendedores:vendedores,pedidos:pedidos,ranking:ranking})[t]()}
