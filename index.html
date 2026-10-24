@@ -195,7 +195,7 @@ async function criarV(){
 
 /* ---------- pedidos de todos os vendedores ---------- */
 let PD=[],PF={v:'',t:'',q:''};
-const TP={chat:'Chat',ficha:'Ficha CDC',contrato:'Pré-contrato CNH',contato:'Contato'};
+const TP={rascunho:'Em andamento (não enviou)',chat:'Chat',ficha:'Ficha CDC',contrato:'Pré-contrato CNH',contato:'Contato'};
 const LB={nome:'Nome',nome_completo:'Nome completo',telefone:'Telefone',email:'E-mail',cpf:'CPF',rg:'RG',rg_emissao:'Emissão do RG',nascimento:'Nascimento',cidade_nascimento:'Cidade de nascimento',pai:'Pai',mae:'Mãe',cep:'CEP',rua:'Rua',numero:'Número',bairro:'Bairro',cidade:'Cidade',estado:'Estado',ref_nome:'Referência',ref_telefone:'Tel. da referência',telefone_recado:'Telefone de recado',ocupacao:'Ocupação',renda:'Renda',entrada:'Entrada',habilitacao:'Habilitação',lance:'Lance',lance_valor:'Valor do lance',moto_nome:'Moto',cor:'Cor',pagamento:'Modalidade',parcela:'Parcela',forma_pagamento:'Forma de pagamento',troca:'Moto na troca',parcelamento_cartao:'Parcelamento',tipo:'Tipo',detalhes:'Detalhes',mensagem:'Mensagem',status:'Status',created_at:'Recebido em',updated_at:'Atualizado em'};
 const SKIP=new Set(['id','moto_id','completo','lgpd_aceite']);
 async function pedidos(){
