@@ -64,6 +64,10 @@ textarea{min-height:150px;resize:vertical}label.l{display:block;font-size:13px;f
 header{position:relative}.hd-acc{position:absolute;top:16px;right:18px;display:flex;gap:8px;z-index:2}.hd-acc button{background:#ffffff14;color:#fff;border:1px solid #ffffff30;border-radius:999px;padding:8px 14px;font:600 13px inherit;cursor:pointer}.hd-acc button:hover{background:#ffffff26}
 @media(max-width:700px){.hd-acc{position:static;margin:10px 0 0;flex-wrap:wrap}}
 a.btn{text-decoration:none}.md a.btn,.lk a.btn{text-decoration:none!important}
+
+.dz{background:#fff5f5;border:1px solid #f1c4c4;border-radius:14px;padding:14px;margin-top:8px}.dz p{margin:0 0 10px;line-height:1.5}
+.dz-lk{margin-top:18px;padding-top:14px;border-top:1px dashed #e3e3ec;text-align:center}.btn.dg{color:#b00020;border-color:#e7b4bc;background:#fff}.btn.dg:hover{background:#fff0f2}
+.btn.dg-b{background:#b00020;color:#fff;border-color:#b00020}.btn.dg-b:disabled{opacity:.4;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -215,7 +219,8 @@ function perfil(id,senha){
    <div class="pwn"><input id="pw_n" type="text" autocomplete="off" spellcheck="false" placeholder="Nova senha (mínimo 8 caracteres)"><button type="button" class="btn sm" onclick="pwGerar()">🎲 Gerar</button></div>
    <button type="button" class="btn red sm" style="color:#fff;background:var(--r)" onclick="pwSalva('${v.id}')">Salvar nova senha</button></section>
   <section class="pf-s"><h3>Links</h3>${(v.links||[]).map(k=>`<div class="lk"><div><b>${esc(k.etiqueta)}</b><small>${esc(k.endereco)}</small></div><a class="btn sm" href="${esc(k.endereco)}" target="_blank" rel="noopener">Abrir</a><button type="button" class="btn sm" onclick="copiar('${esc(k.endereco)}')">Copiar</button></div>`).join('')}</section>
-  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm" onclick="acessosCp('${v.id}')">Copiar acessos</button>${waLink(v.whatsapp)?`<button type="button" class="btn sm" onclick="acessosWa('${v.id}')">Enviar por WhatsApp</button>`:''}<button type="button" class="btn sm" onclick="suspV('${v.id}',${!v.suspenso})">${v.suspenso?'Reativar site e dados':'Suspender site e dados'}</button><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
+  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm" onclick="acessosCp('${v.id}')">Copiar acessos</button>${waLink(v.whatsapp)?`<button type="button" class="btn sm" onclick="acessosWa('${v.id}')">Enviar por WhatsApp</button>`:''}<button type="button" class="btn sm" onclick="suspV('${v.id}',${!v.suspenso})">${v.suspenso?'Reativar site e dados':'Suspender site e dados'}</button><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>
+  <div class="dz-lk"><button type="button" class="btn sm dg" onclick="excluirV('${v.id}')">🗑 Excluir vendedor</button></div>`);
   pwCarrega(id)}
 async function pwCarrega(id){
   const r=await sb.rpc('mestre_vendedor_senha',{p_id:id}),i=document.getElementById('pw_i'),b1=document.getElementById('pw_b1'),b2=document.getElementById('pw_b2');
@@ -236,6 +241,20 @@ async function pwSalva(id){
   PWS[id]=n;toast('Senha alterada. O vendedor já pode entrar com a nova senha.');perfil(id)}
 function acessosCp(id){const v=VL.find(x=>x.id===id);if(v)copiar(acessosTxt(v,PWS[id]||null))}
 function acessosWa(id){const v=VL.find(x=>x.id===id);if(v)window.open(waLink(v.whatsapp,acessosTxt(v,PWS[id]||null)),'_blank','noopener')}
+
+/* ---------- excluir vendedor (só aqui no admin geral) ---------- */
+function excluirV(id){
+  const v=VL.find(x=>x.id===id);if(!v)return;const tot=(v.chat||0)+(v.fichas||0)+(v.contratos||0)+(v.contatos||0);
+  modal(`<h2>Excluir ${esc(v.nome)}?</h2><div class="dz"><p><b>Isto não tem volta.</b> Serão apagados para sempre: o <b>login</b>, o site, as <b>${v.motos} motos</b> e <b>${tot} pedido${tot===1?'':'s'}/dado${tot===1?'':'s'} de clientes</b> deste vendedor.</p>
+  <p class="mu" style="margin:0">Se você só quer tirar o site do ar, use <b>Suspender</b>: dá para reativar depois.</p>
+  <label class="l" for="ex_c">Para confirmar, digite o endereço do vendedor: <b>${esc(v.slug)}</b></label><input id="ex_c" autocomplete="off" spellcheck="false" placeholder="${esc(v.slug)}" oninput="exChk('${esc(v.slug)}')"></div>
+  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm dg-b" id="ex_b" disabled onclick="exOk('${v.id}')">Excluir definitivamente</button><button type="button" class="btn sm" onclick="perfil('${v.id}')">Cancelar</button></div>`)}
+function exChk(s){const b=document.getElementById('ex_b');if(b)b.disabled=document.getElementById('ex_c').value.trim().toLowerCase()!==s}
+async function exOk(id){
+  const c=(document.getElementById('ex_c').value||'').trim();
+  const r=await sb.rpc('mestre_excluir_vendedor',{p_id:id,p_confirma:c});if(r.error)return toast('Erro: '+r.error.message);
+  delete PWS[id];fechaMd();toast(r.data||'Vendedor excluído');await carregaV();
+  if(TAB==='vendedores')vendedores();else if(TAB==='ranking')ranking();else if(TAB==='pedidos')pedidos()}
 async function redefV(id){const v=VL.find(x=>x.id===id);if(!confirm(`Gerar uma nova senha para ${v.nome}? A senha antiga deixa de funcionar.`))return;
   const r=await sb.rpc('mestre_redefinir_senha',{p_id:id});if(r.error)return toast('Erro: '+r.error.message);perfil(id,r.data.senha)}
 async function suspV(id,s){const v=VL.find(x=>x.id===id);
