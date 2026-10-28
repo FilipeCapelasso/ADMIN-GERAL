@@ -70,6 +70,9 @@ a.btn{text-decoration:none}.md a.btn,.lk a.btn{text-decoration:none!important}
 @media(prefers-color-scheme:dark){.pwr .pw.on{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}.pw-i.ok{color:#5fd08a}.pw-i.warn{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}
  .dz{background:#2a1215;border-color:#6b2a30;color:#f1dcdf}.dz .mu{color:#d3a9ae}.btn.dg{color:#ff8a98;border-color:#6b2a30}.btn.dg:hover{background:#2a1215}.dz input{background:#16161d}}
 @media(max-width:520px){.pf-g{grid-template-columns:1fr}}
+
+.te-s{padding:10px 12px;border-radius:12px;font-weight:700;margin:0 0 10px}.te-s.ok{background:#e9f8ef;color:#17803d}.te-s.er{background:#fdecec;color:#b00020}
+.te-i{border:1px solid #ececf2;border-radius:12px;padding:10px 12px;margin-bottom:8px}.te-i.er{border-color:#f1c4c4;background:#fff7f7}.te-i b{display:block}.te-i small{color:#7a7a88}.te-i p{margin:6px 0 0;font-size:13px;line-height:1.45;word-break:break-word}
 </style>
 </head>
 <body>
@@ -213,7 +216,7 @@ async function vendedores(){
   if(!await carregaV())return;
   const tot=v=>v.chat+v.fichas+v.contratos+v.contatos;
   $('#app').innerHTML=head()+`<div class="w"><div class="kp"><div><b>${VL.length}</b><span>vendedores</span></div><div><b>${VL.filter(v=>!v.suspenso).length}</b><span>ativos</span></div><div><b>${VL.filter(v=>v.suspenso).length}</b><span>suspensos</span></div><div><b>${VL.reduce((a,v)=>a+tot(v),0)}</b><span>pedidos e dados</span></div></div>
-  <div class="fl"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="novoV()">+ Novo vendedor</button></div>
+  <div class="fl"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="novoV()">+ Novo vendedor</button><button class="btn sm" onclick="testarTodos()">🧪 Testar entrega de todos</button></div>
   ${VL.map(v=>`<div class="it ${v.suspenso?'susp':''}"><div class="g"><b>${esc(v.nome)}</b><small>${esc(v.email||'sem e-mail')} · /${esc(v.slug)}</small>
   <small>${v.suspenso?'<span class="tg s">SUSPENSO</span>':'<span class="tg">ATIVO</span>'}<span class="tg c">${v.motos} motos</span><span class="tg c">${tot(v)} pedidos/dados</span></small></div>
   <div class="ac"><button class="btn red sm" onclick="perfil('${v.id}')">Perfil</button></div></div>`).join('')||'<p class="mu">Nenhum vendedor.</p>'}</div>`}
@@ -233,7 +236,7 @@ function perfil(id,senha){
    <div class="pwn"><input id="pw_n" type="text" autocomplete="off" spellcheck="false" placeholder="Nova senha (mínimo 8 caracteres)"><button type="button" class="btn sm" onclick="pwGerar()">🎲 Gerar</button></div>
    <button type="button" class="btn red sm" style="color:#fff;background:var(--r)" onclick="pwSalva('${v.id}')">Salvar nova senha</button></section>
   <section class="pf-s"><h3>Links</h3>${(v.links||[]).map(k=>`<div class="lk"><div><b>${esc(k.etiqueta)}</b><small>${esc(k.endereco)}</small></div><a class="btn sm" href="${esc(k.endereco)}" target="_blank" rel="noopener">Abrir</a><button type="button" class="btn sm" onclick="copiar('${esc(k.endereco)}')">Copiar</button></div>`).join('')}</section>
-  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm" onclick="acessosCp('${v.id}')">Copiar acessos</button>${waLink(v.whatsapp)?`<button type="button" class="btn sm" onclick="acessosWa('${v.id}')">Enviar por WhatsApp</button>`:''}<button type="button" class="btn sm" onclick="suspV('${v.id}',${!v.suspenso})">${v.suspenso?'Reativar site e dados':'Suspender site e dados'}</button><button type="button" class="btn sm dg" onclick="excluirV('${v.id}')">🗑 Excluir</button><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
+  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm" onclick="acessosCp('${v.id}')">Copiar acessos</button>${waLink(v.whatsapp)?`<button type="button" class="btn sm" onclick="acessosWa('${v.id}')">Enviar por WhatsApp</button>`:''}<button type="button" class="btn sm" onclick="suspV('${v.id}',${!v.suspenso})">${v.suspenso?'Reativar site e dados':'Suspender site e dados'}</button><button type="button" class="btn sm" onclick="testarUm('${v.id}')">🧪 Testar entrega</button><button type="button" class="btn sm dg" onclick="excluirV('${v.id}')">🗑 Excluir</button><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
   pwCarrega(id)}
 async function pwCarrega(id){
   const r=await sb.rpc('mestre_vendedor_senha',{p_id:id}),i=document.getElementById('pw_i'),b1=document.getElementById('pw_b1'),b2=document.getElementById('pw_b2');
@@ -268,6 +271,38 @@ async function exOk(id){
   const r=await sb.rpc('mestre_excluir_vendedor',{p_id:id,p_confirma:c});if(r.error)return toast('Erro: '+r.error.message);
   delete PWS[id];fechaMd();toast(r.data||'Vendedor excluído');await carregaV();
   if(TAB==='vendedores')vendedores();else if(TAB==='ranking')ranking();else if(TAB==='pedidos')pedidos()}
+
+/* ---------- teste de entrega: simula um cliente em cada site e confere o que REALMENTE chegou ---------- */
+const TAG_T='__TESTE_ENTREGA__';
+const uuidT=()=>crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:r&3|8).toString(16)});
+async function testeEntregaV(v){
+  const falhas=[],ck=(n,r)=>{if(r&&r.error)falhas.push(n+': '+r.error.message)};
+  try{
+    const anon=supabase.createClient(SB_URL,SB_KEY,{global:{headers:{'x-vendedor':v.slug}},auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+    ck('Chat',await anon.rpc('registrar_pedido_chat',{p:{id:uuidT(),completo:true,nome:TAG_T,nome_completo:TAG_T,telefone:'+5568900000000',moto_nome:'TESTE',pagamento:'consorcio',mensagem:'teste de entrega'}}));
+    ck('Formulário',await anon.from('leads').insert({tipo:'teste',nome:TAG_T,telefone:'+5568900000000',moto_nome:'TESTE'}));
+    ck('Preenchimento (financiamento)',await anon.rpc('registrar_rascunho',{p:{id:uuidT(),origem:'financiamento',nome:TAG_T,telefone:'(68) 90000-0000',moto_nome:'TESTE',dados:{nome:TAG_T}}}));
+    ck('Preenchimento (chat)',await anon.rpc('registrar_rascunho',{p:{id:uuidT(),origem:'chat',nome:TAG_T,dados:{nome:TAG_T,etapa:'nome'}}}));
+  }catch(e){falhas.push('Erro inesperado: '+(e&&e.message||e))}
+  return falhas}
+async function rodaTeste(lista){
+  modal(`<h2>🧪 Teste de entrega</h2><p class="mu">Simulando um cliente real em cada site e conferindo se o pedido chegou ao vendedor…</p><div id="te_s"></div><div id="te_r"></div><div class="fl" style="margin-top:12px"><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
+  const out=document.getElementById('te_r'),res=[],draw=()=>{const e=document.getElementById('te_r');if(e)e.innerHTML=res.map(r=>`<div class="te-i ${r.ok===true?'ok':r.ok===false?'er':'su'}"><b>${r.ok===true?'✅':r.ok===false?'❌':'⏸️'} ${esc(r.nome)}</b><small>/${esc(r.slug)}</small><p>${esc(r.det)}</p></div>`).join('')};
+  const ativos=lista.filter(v=>!v.suspenso),imed={};
+  for(const v of lista)if(v.suspenso)res.push({nome:v.nome,slug:v.slug,ok:null,det:'Site suspenso: não foi testado (reative para voltar a receber).'});
+  for(const v of ativos){imed[v.id]=await testeEntregaV(v);res.push({nome:v.nome,slug:v.slug,ok:undefined,det:'testando…'});draw()}
+  const cont=await sb.rpc('mestre_testes_entrega_contagem');
+  if(cont.error){document.getElementById('te_r').innerHTML='<p class="pw-i warn">Não foi possível conferir o que chegou: '+esc(cont.error.message)+' (rode o SQL atualizado no Supabase).</p>';return}
+  const por=Object.fromEntries((cont.data||[]).map(c=>[c.vendedor_id,c])),fin=res.filter(r=>r.ok===null);
+  for(const v of ativos){const c=por[v.id]||{},f=[...(imed[v.id]||[])];
+    if(c.chat!==1)f.push('o pedido do chat NÃO chegou');if(c.lead!==1)f.push('o formulário NÃO chegou');if(c.rasc_fin!==1)f.push('o preenchimento do formulário NÃO chegou');if(c.rasc_chat!==1)f.push('o chat desde a 1ª resposta NÃO chegou');
+    fin.push({nome:v.nome,slug:v.slug,ok:f.length===0,det:f.length?f.join(' · '):'Tudo chegou: pedido do chat, formulário e preenchimentos.'})}
+  res.length=0;fin.sort((a,b)=>(a.ok===false?0:a.ok===true?1:2)-(b.ok===false?0:b.ok===true?1:2)).forEach(r=>res.push(r));
+  const bad=res.filter(r=>r.ok===false).length,good=res.filter(r=>r.ok===true).length;
+  document.getElementById('te_s').innerHTML=`<p class="te-s ${bad?'er':'ok'}">${bad?`⚠️ ${bad} vendedor(es) com falha. Rode o SQL único atualizado no Supabase e teste de novo.`:`✅ Todos os ${good} vendedores ativos estão recebendo.`}</p>`;draw();
+  await sb.rpc('mestre_limpar_testes_entrega')}
+async function testarTodos(){if(!VL.length)await carregaV();rodaTeste(VL)}
+async function testarUm(id){const v=VL.find(x=>x.id===id);if(v)rodaTeste([v])}
 async function redefV(id){const v=VL.find(x=>x.id===id);if(!confirm(`Gerar uma nova senha para ${v.nome}? A senha antiga deixa de funcionar.`))return;
   const r=await sb.rpc('mestre_redefinir_senha',{p_id:id});if(r.error)return toast('Erro: '+r.error.message);perfil(id,r.data.senha)}
 async function suspV(id,s){const v=VL.find(x=>x.id===id);
