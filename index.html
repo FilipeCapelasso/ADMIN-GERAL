@@ -170,7 +170,19 @@ async function config(){
   <label class="l" for="cf_v">Link do vídeo</label><input id="cf_v" placeholder="https://www.youtube.com/watch?v=..." value="${esc(c.video_como_funciona||'')}" oninput="$('#cf_p').innerHTML=cfVid(this.value.trim())">
   <div style="margin-top:12px"><input id="cf_f" type="file" accept="video/mp4,video/webm" onchange="cfUp(this.files[0])"><p class="mu">Ou envie do aparelho (até 50 MB).</p></div>
   <div id="cf_p" style="margin-top:10px">${cfVid(c.video_como_funciona||'')}</div>
-  <div class="bar"><button class="btn red" onclick="cfSalva()">Salvar para todos os vendedores</button><button class="btn" onclick="cfLimpa()">Remover vídeo</button></div></div></div>`}
+  <div class="bar"><button class="btn red" onclick="cfSalva()">Salvar para todos os vendedores</button><button class="btn" onclick="cfLimpa()">Remover vídeo</button></div></div>
+  <div class="cd" style="margin-top:14px"><h2>Dados da loja</h2><p class="mu">Aparecem em <b>todos os sites dos vendedores</b>, no bloco “Visite a loja” com o botão <b>Como chegar</b>. Se um vendedor tiver endereço ou horário próprios no perfil, o dele tem prioridade.</p>
+  <label class="l" for="lj_n">Nome da loja</label><input id="lj_n" value="${esc(c.loja_nome||'')}" placeholder="Ex.: Star Motos · Grupo Star">
+  <label class="l" for="lj_e">Endereço</label><input id="lj_e" value="${esc(c.loja_endereco||'')}" placeholder="Rua, número, bairro, cidade">
+  <label class="l" for="lj_t">Telefone</label><input id="lj_t" value="${esc(c.loja_telefone||'')}" placeholder="(68) 3302-3080">
+  <label class="l" for="lj_h">Horário de atendimento (opcional)</label><input id="lj_h" value="${esc(c.loja_horario||'')}" placeholder="Ex.: Seg a Sex, 8h às 18h · Sáb, 8h às 12h">
+  <label class="l" for="lj_m">Link do mapa (opcional)</label><input id="lj_m" value="${esc(c.loja_maps||'')}" placeholder="https://maps.app.goo.gl/... (se vazio, o mapa é montado pelo endereço)">
+  <div class="bar"><button class="btn red" onclick="ljSalva()">Salvar dados da loja</button></div></div></div>`}
+async function ljSalva(){
+  const g=i=>(document.getElementById(i).value||'').trim(),m=g('lj_m');
+  if(m&&!/^https?:\/\//i.test(m))return toast('O link do mapa precisa começar com https://');
+  const{data,error}=await sb.rpc('mestre_config_salvar',{p:{loja_nome:g('lj_n'),loja_endereco:g('lj_e'),loja_telefone:g('lj_t'),loja_horario:g('lj_h'),loja_maps:m}});
+  if(error)return toast('Erro: '+error.message);toast(data||'Salvo');config()}
 async function cfUp(f){
   if(!f)return;if(f.size>50*1024*1024)return toast('O vídeo passa de 50 MB: envie um arquivo menor ou use um link do YouTube');
   toast('Enviando vídeo…');
