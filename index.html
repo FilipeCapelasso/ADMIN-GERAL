@@ -317,13 +317,13 @@ function novoV(){
   <label class="l" for="nv_n">Nome *</label><input id="nv_n" placeholder="Nome do vendedor">
   <label class="l" for="nv_e">E-mail (será o login) *</label><input id="nv_e" type="email" placeholder="email@exemplo.com">
   <label class="l" for="nv_w">WhatsApp</label><input id="nv_w" inputmode="tel" placeholder="(68) 99999-9999">
-  <label class="l" for="nv_s">Endereço do site (opcional)</label><input id="nv_s" placeholder="Ex.: joao-motos (deixe vazio para gerar do nome)">
+  <label class="l" for="nv_s">Nome no endereço do site (opcional)</label><input id="nv_s" placeholder="Ex.: joao-motos  →  o link será …vercel.app/joao-motos" autocapitalize="none" autocomplete="off">
   <label class="l" for="nv_p">Senha (opcional)</label><input id="nv_p" placeholder="Deixe vazio para gerar uma senha forte">
   <div class="fl" style="margin-top:14px"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="criarV()">Criar vendedor</button><button class="btn sm" onclick="fechaMd()">Cancelar</button></div>`)}
 async function criarV(){
   const n=$('#nv_n').value.trim(),e=$('#nv_e').value.trim();if(!n||!e)return toast('Informe nome e e-mail');
   const r=await sb.rpc('mestre_criar_vendedor',{p_nome:n,p_email:e,p_whatsapp:$('#nv_w').value.trim()||null,p_slug:$('#nv_s').value.trim()||null,p_senha:$('#nv_p').value.trim()||null});
-  if(r.error)return toast('Erro: '+r.error.message);
+  if(r.error)return toast(/slug_reservado/.test(r.error.message)?'Esse nome é reservado pelo sistema (api, admin, index...). Escolha outro nome para o endereço.':'Erro: '+r.error.message);
   const d=r.data;await carregaV();const v=VL.find(x=>x.slug===d.slug)||{nome:d.nome,email:d.email,links:d.links,slug:d.slug,whatsapp:$('#nv_w').value};
   v.links=d.links;v.email=d.email;
   modal(`<h2>Vendedor criado ✅</h2><p class="mu">${esc(d.nome)} já tem site, painel e catálogo completo. Copie os acessos e envie a ele:</p>
