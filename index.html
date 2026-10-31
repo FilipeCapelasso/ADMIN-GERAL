@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Seu site de vendas Honda — Vitrine, CDC e CNH</title>
+<title>Star Motos - Site Vendedores</title>
 <meta name="description" content="Vitrine de motos, financiamento CDC e pré-contrato CNH com identidade própria. A partir de R$ 20/mês, ativação automática por Pix.">
 <style>
 :root{--bg:#0a0a0b;--s:#151517;--s2:#1d1d20;--l:#2a2a2e;--t:#f5f5f4;--m:#a1a1a6;--g:#d4a63a;--g2:#f0cf74;--ok:#3ecf8e;--er:#ff6b6b}
@@ -47,11 +47,13 @@ label{display:block;font-size:13px;color:var(--m);margin:14px 0 5px}input,select
 .tb{overflow-x:auto;border:1px solid var(--l);border-radius:14px;margin-top:14px}table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--l);white-space:nowrap}th{color:var(--m);font-weight:600;background:var(--s)}
 .pill{padding:2px 10px;border-radius:99px;font-size:12px;background:var(--s2)}.pill.pagamento_aprovado,.pill.ativa{color:var(--ok)}.pill.falha_ativacao,.pill.vencida,.pill.suspensa{color:var(--er)}.pill.aguardando_pagamento{color:var(--g2)}
 .mini{background:var(--s2);border:1px solid var(--l);color:var(--t);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:12px;margin-right:4px}
+tr.rw{cursor:pointer}tr.rw:hover td{background:var(--s2)}.lnk{color:var(--g2)}.btn.dg{background:var(--er);color:#fff}.btn.dg:hover{box-shadow:0 8px 24px #ff6b6b40}a.mini{display:inline-block;color:var(--g2)}
+.kv{grid-template-columns:130px 1fr auto}.kv span{font-size:13px}
 #toast{position:fixed;right:16px;bottom:16px;z-index:99;max-width:360px}
-@media(max-width:720px){nav .lk{display:none}.kv{grid-template-columns:90px 1fr auto}}
+@media(max-width:720px){nav .lk{display:none}.logo{font-size:13px;line-height:1.2}nav .btn{padding:10px 14px;font-size:13px;white-space:nowrap}.kv{grid-template-columns:90px 1fr auto}}
 </style></head><body>
 <div id="site">
-<nav><div class="w"><a href="#" class="logo">STAR<b>SITES</b></a><div class="lk"><a href="#solucoes">Soluções</a><a href="#planos">Planos</a><a href="#beneficios">Benefícios</a><a href="#faq">Dúvidas</a></div><button class="btn" onclick="abrir()">Contratar agora</button></div></nav>
+<nav><div class="w"><a href="#" class="logo">Star <b>Motos</b> - Site Vendedores</a><div class="lk"><a href="#solucoes">Soluções</a><a href="#planos">Planos</a><a href="#beneficios">Benefícios</a><a href="#faq">Dúvidas</a></div><button class="btn" onclick="abrir()">Contratar agora</button></div></nav>
 
 <header class="hero"><div class="w"><span class="tag">Para vendedores Honda</span>
 <h1>Tenha sua própria <em>estrutura digital</em> de vendas.</h1>
@@ -79,12 +81,12 @@ label{display:block;font-size:13px;color:var(--m);margin:14px 0 5px}input,select
 <details><summary>E se meu plano vencer?</summary><p>Os sites são suspensos, mas nada é apagado. Pagando de novo, tudo volta como estava.</p></details>
 <details><summary>Como funciona a renovação?</summary><p>Você gera um novo Pix no mesmo endereço. Se renovar antes de vencer, o tempo novo soma ao que resta.</p></details>
 <details><summary>Posso trocar de plano?</summary><p>Sim, na renovação você escolhe Essencial ou Premium.</p></details></div></section>
-<footer><div class="w">© <span id="y"></span> StarSites · Sistemas para vendedores Honda · <a href="#admin" style="color:var(--m)">Área do dono</a></div></footer>
+<footer><div class="w">© <span id="y"></span> Star Motos - Site Vendedores · Sistemas para vendedores Honda · <a href="#admin" style="color:var(--m)">Área do dono</a></div></footer>
 </div>
 
 <div class="ov" id="ov"><div class="bx" id="bx"></div></div>
 
-<div id="adm"><div class="w" style="padding-top:20px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="logo">STAR<b>SITES</b> · Admin</span><span><button class="mini" onclick="go('')">Ver site</button><button class="mini" onclick="sair()">Sair</button></span></div><div id="ad"></div></div></div>
+<div id="adm"><div class="w" style="padding-top:20px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="logo">Star <b>Motos</b> - Site Vendedores (Admin Geral)</span><span><button class="mini" onclick="go('')">Ver site</button><button class="mini" onclick="sair()">Sair</button></span></div><div id="ad"></div></div></div>
 <div id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -127,7 +129,7 @@ const all=`Vitrine: ${L.vitrine}\nCDC: ${L.cdc}\nCNH: ${L.cnh}\nAdmin: ${L.admin
 $('bx').innerHTML=`<button class="x" onclick="fechar()">×</button><h3>🎉 Pagamento confirmado!</h3><p style="color:var(--m);font-size:14px">Seus sites estão no ar. Salve estas informações agora.</p>
 <div class="nt"><h4>Seus dados</h4>${row('Nome',k.nome)}${row('Loja',k.loja)}${row('Cidade',k.cidade+' - '+k.estado)}${row('WhatsApp',k.telefone)}${row('Plano',d.plano+' ('+d.periodo+') · '+R(d.valor))}${d.vence?row('Válido até',new Date(d.vence).toLocaleDateString('pt-BR')):''}</div>
 <div class="nt"><h4>Seus links</h4>${row('Vitrine',L.vitrine)}${row('CDC',L.cdc)}${row('CNH',L.cnh)}${row('Painel admin',L.admin)}</div>
-<div class="nt"><h4>Acesso ao painel</h4>${row('E-mail',k.email)}${d.senha?row('Senha',d.senha):'<div class="kv"><span>Senha</span><b>Use a senha que você já tinha</b><i></i></div>'}${d.senha?'<p style="font-size:12px;color:var(--m);margin-top:8px">⚠ A senha aparece só desta vez. Copie agora e troque depois no painel.</p>':''}</div>
+<div class="nt"><h4>Acesso ao painel</h4>${row('E-mail',k.email)}${d.senha?row('Senha',d.senha):'<div class="kv"><span>Senha</span><b>Este e-mail já tinha acesso: use a senha de sempre</b><i></i></div><p style="font-size:12px;color:var(--m);margin-top:8px">Para receber uma senha nova, contrate com um e-mail ainda não cadastrado ou peça ao suporte para gerar outra.</p>'}${d.senha?'<p style="font-size:12px;color:var(--m);margin-top:8px">⚠ A senha aparece só desta vez. Copie agora e troque depois no painel.</p>':''}</div>
 <button class="btn" style="width:100%;margin-top:16px" onclick="cop(0,${esc(JSON.stringify(all)).replace(/&quot;/g,'&quot;')})">Copiar tudo</button><a class="btn o" style="width:100%;margin-top:10px" href="${esc(L.admin)}" target="_blank" rel="noopener">Entrar no meu painel</a>`}
 function toast(t,html){const e=$('toast');e.innerHTML=html||`<div class="card" style="padding:12px 18px;border-color:var(--g)">${esc(t)}</div>`;clearTimeout(toast.t);toast.t=setTimeout(()=>e.innerHTML='',html?12000:2200)}
 
@@ -139,18 +141,49 @@ async function admin(){const{data}=await sb.auth.getSession();if(!data.session)r
 function login(m){$('ad').innerHTML=`<div class="bx" style="margin-top:60px"><h3>Área do dono</h3><p style="color:var(--m);font-size:14px">Acesso restrito.</p><label>E-mail</label><input id="a_e" type="email"><label>Senha</label><input id="a_p" type="password" onkeydown="if(event.key=='Enter')entrar()"><div class="msg ${m?'er':''}">${esc(m||'')}</div><button class="btn" style="width:100%;margin-top:16px" onclick="entrar()">Entrar</button></div>`}
 async function entrar(){const{error}=await sb.auth.signInWithPassword({email:$('a_e').value.trim(),password:$('a_p').value});if(error)return login('E-mail ou senha incorretos.');admin()}
 async function sair(){await sb.auth.signOut();clearInterval(ap);login()}
+let V=[],fq='';
+const fdt=x=>x?new Date(x).toLocaleDateString('pt-BR'):'-',pil=s=>`<span class="pill ${esc(s)}">${esc(String(s||'-').replace(/_/g,' '))}</span>`;
 async function carregar(q){const{data,error}=await sb.rpc('ps_admin_painel');if(error){if(q)return;await sb.auth.signOut();return login('Esta conta não é a do dono da plataforma.')}
+const rv=await sb.rpc('mestre_vendedores');if(rv.error){if(!q)toast('Não consegui listar os vendedores: '+rv.error.message)}else V=rv.data||[];
 if(seen!==null&&data.kpis.aprovados>seen){const n=data.pedidos.find(p=>p.status=='pagamento_aprovado');if(n)toast('',`<div class="nt" style="background:var(--s)"><h4>💰 Nova venda!</h4><div style="font-size:14px"><b>${esc(n.dados.nome)}</b> · ${esc(n.dados.loja)}<br>${esc(n.dados.cidade)}-${esc(n.dados.estado)} · ${esc(n.plan_id)} ${esc(n.billing_period)} · ${R(n.amount)}<br>/${esc(n.slug)} · ${esc(n.dados.email)}</div></div>`)}
 seen=data.kpis.aprovados;A=data;if(!q||tab=='dash')pinta()}
-function pinta(){const k=A.kpis,T=(h,rows)=>`<div class="tb"><table><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr>${rows}</table></div>`,d=x=>x?new Date(x).toLocaleDateString('pt-BR'):'-',pill=s=>`<span class="pill ${esc(s)}">${esc(String(s||'-').replace(/_/g,' '))}</span>`;let h='';
-const tabs=[['dash','Dashboard'],['ped','Pedidos'],['cli','Clientes'],['cfg','Configurações']];
-if(tab=='dash')h=`<div class="kp">${[['Vendedores',k.vendedores],['Clientes ativos',k.ativos],['Vencidas',k.vencidas],['Pedidos pendentes',k.pendentes],['Pedidos aprovados',k.aprovados],['Faturamento do mês',R(k.mes)],['Faturamento do ano',R(k.ano)]].map(x=>`<div><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>`;
-if(tab=='ped')h=T(['Data','Cliente','Loja','Plano','Valor','Status','Endereço','ID MP'],A.pedidos.map(p=>`<tr><td>${d(p.created_at)}</td><td>${esc(p.dados.nome)}<br><small>${esc(p.dados.email)}</small></td><td>${esc(p.dados.loja)}</td><td>${esc(p.plan_id)} ${esc(p.billing_period)}</td><td>${R(p.amount)}</td><td>${pill(p.status)}${p.erro?`<br><small>${esc(p.erro)}</small>`:''}</td><td>${esc(p.slug)}</td><td>${esc(p.mp)}</td></tr>`).join(''));
-if(tab=='cli')h=T(['Cliente','WhatsApp','Loja','Endereço','Plano','Status','Vence','Ações'],A.clientes.map(c=>`<tr><td>${esc(c.name)}<br><small>${esc(c.email)}</small></td><td>${esc(c.phone)}</td><td>${esc(c.dealership)}<br><small>${esc(c.city)}-${esc(c.state)}</small></td><td>${esc(c.slug)}</td><td>${esc(c.plan_id)} ${esc(c.billing_period)}</td><td>${pill(c.suspenso?'suspensa':c.status)}</td><td>${d(c.expires_at)}</td><td>${c.slug?`<button class="mini" onclick="acao({acao:'suspender',slug:'${esc(c.slug)}',valor:${!c.suspenso}})">${c.suspenso?'Reativar':'Suspender'}</button>`:''}<button class="mini" onclick="nsenha('${esc(c.email)}')">Nova senha</button></td></tr>`).join(''));
+function cli(slug){return(A.clientes||[]).find(c=>c.slug==slug)||{}}
+function vrows(){const s=fq.toLowerCase().trim();const L=V.filter(v=>!s||[v.nome,v.slug,v.email,v.whatsapp].join(' ').toLowerCase().includes(s));
+return L.map(v=>{const c=cli(v.slug);return `<tr class="rw" onclick="vend('${esc(v.id)}')"><td><b class="lnk">${esc(v.nome)}</b><br><small>/${esc(v.slug)}</small></td><td>${pil(v.suspenso?'suspensa':'ativa')}</td><td>${c.plan_id?esc(c.plan_id)+' '+esc(c.billing_period||''):'<small>cadastro manual</small>'}</td><td>${fdt(c.expires_at)}</td><td>${v.motos}</td><td>${fdt(v.criado)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--m);padding:28px">Nenhum vendedor encontrado.</td></tr>'}
+function pinta(){const k=A.kpis;let h='';
+const tabs=[['dash','Dashboard'],['vend','Vendedores'],['cfg','Configurações']];if(!tabs.some(t=>t[0]==tab))tab='dash';
+if(tab=='dash')h=`<div class="kp">${[['Vendedores',k.vendedores],['Clientes ativos',k.ativos],['Suspensos',V.filter(v=>v.suspenso).length],['Vencidas',k.vencidas],['Pedidos pendentes',k.pendentes],['Pedidos aprovados',k.aprovados],['Faturamento do mês',R(k.mes)],['Faturamento do ano',R(k.ano)]].map(x=>`<div><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>`;
+if(tab=='vend')h=`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><input id="vq" placeholder="Buscar por nome, endereço, e-mail ou WhatsApp" value="${esc(fq)}" oninput="fq=this.value;$('vt').innerHTML=vrows()" style="max-width:420px"><span style="color:var(--m);font-size:13px">${V.length} vendedor(es) · toque no nome para ver links, e-mail e senha</span></div><div class="tb"><table><thead><tr><th>Vendedor</th><th>Status</th><th>Plano</th><th>Vence</th><th>Motos</th><th>Cadastro</th></tr></thead><tbody id="vt">${vrows()}</tbody></table></div>`;
 if(tab=='cfg')h=`<div class="grid"><div class="card"><h3>Mercado Pago</h3><p style="color:var(--m);font-size:14px">Status: ${A.config.mp?'<b style="color:var(--ok)">token configurado</b>':'<b style="color:var(--er)">token ausente</b>'}</p><label>Access Token (APP_USR-...)</label><input id="tk" type="password" placeholder="cole aqui e salve"><div style="margin-top:12px"><button class="btn" onclick="acao({acao:'token',valor:$('tk').value}).then(()=>{$('tk').value='';carregar()})">Salvar token</button> <button class="btn o" onclick="acao({acao:'testar'}).then(r=>toast(r.ok?'Conectado: '+r.conta:'Falhou: '+r.conta))">Testar</button></div><p style="color:var(--m);font-size:12px;margin-top:12px">O sistema confere os pagamentos pendentes a cada minuto, mesmo com a página fechada. Se preferir, force a conferência abaixo.</p><button class="btn o" style="margin-top:8px" onclick="acao({acao:'reverificar'}).then(r=>{toast(r.verificados+' pedidos verificados');carregar()})">Reverificar pendentes</button></div>
+<div class="card"><h3>Catálogo das motos</h3><p style="color:var(--m);font-size:14px">Todo vendedor novo já recebe o catálogo geral completo (nomes, fotos, preços, descrição, cores e planos de consórcio). Use o botão para entregar agora as motos novas a todos os vendedores.</p><button class="btn" style="margin-top:12px" id="bst" onclick="syncTodos()">Sincronizar todos os vendedores</button></div>
 ${A.planos.map(p=>`<div class="card"><h3>Plano ${esc(p.name)}</h3><label>Mensal (R$)</label><input id="m_${esc(p.id)}" type="number" step="0.01" value="${p.monthly_price}"><label>Anual (R$)</label><input id="a_${esc(p.id)}" type="number" step="0.01" value="${p.annual_price}"><button class="btn" style="margin-top:12px" onclick="acao({acao:'plano',id:'${esc(p.id)}',mensal:$('m_${esc(p.id)}').value,anual:$('a_${esc(p.id)}').value}).then(()=>{toast('Preços salvos');load()})">Salvar</button></div>`).join('')}</div>`;
 $('ad').innerHTML=`<div class="tabs">${tabs.map(t=>`<button class="${tab==t[0]?'on':''}" onclick="tab='${t[0]}';pinta()">${t[1]}</button>`).join('')}</div>${h}`}
-async function acao(p){const{data,error}=await sb.rpc('ps_admin_acao',{p});if(error){toast(error.message);throw error}if(p.acao=='suspender')carregar();return data}
-async function nsenha(e){if(!confirm('Gerar nova senha para '+e+'?'))return;const r=await acao({acao:'senha',email:e});toast('',`<div class="nt" style="background:var(--s)"><h4>Nova senha</h4><div class="kv"><span>${esc(e)}</span><b>${esc(r.senha)}</b><button onclick="cop(0,'${esc(r.senha)}')">copiar</button></div></div>`)}
+async function acao(p){const{data,error}=await sb.rpc('ps_admin_acao',{p});if(error){toast(error.message);throw error}return data}
+async function syncTodos(){const b=$('bst');b.disabled=true;b.textContent='Sincronizando...';try{await acao({acao:'sincronizar_todos'});toast('Catálogo entregue a todos os vendedores.');await carregar()}catch(e){}b.disabled=false;b.textContent='Sincronizar todos os vendedores'}
+
+/* ---- ficha do vendedor (links, e-mail, senha, suspender, apagar) ---- */
+const kvr=(a,b,extra)=>`<div class="kv"><span>${a}</span><b>${esc(b)}</b>${extra===undefined?`<button data-v="${esc(b)}" onclick="cop(0,this.dataset.v)">copiar</button>`:extra}</div>`;
+async function vend(id){const v=V.find(x=>x.id==id);if(!v)return;stop();$('ov').classList.add('on');document.body.style.overflow='hidden';
+const c=cli(v.slug),L=v.links||[];
+$('bx').innerHTML=`<button class="x" onclick="fechar()">×</button><h3>${esc(v.nome)}</h3><p style="color:var(--m);font-size:14px;margin-bottom:6px">${pil(v.suspenso?'suspensa':'ativa')} <span style="margin-left:6px">/${esc(v.slug)}</span></p>
+<div class="nt"><h4>Acesso ao painel</h4>${kvr('E-mail',v.email||'-')}<div id="vs"><div class="kv"><span>Senha</span><b style="color:var(--m)">carregando...</b><i></i></div></div></div>
+<div class="nt"><h4>Links do vendedor</h4>${L.map(l=>kvr(l.etiqueta,l.endereco,`<span style="white-space:nowrap"><button data-v="${esc(l.endereco)}" onclick="cop(0,this.dataset.v)">copiar</button> <a class="mini" style="margin:0" href="${esc(l.endereco)}" target="_blank" rel="noopener">abrir</a></span>`)).join('')||'<p style="color:var(--m);font-size:13px">Sem links.</p>'}</div>
+<div class="nt" style="border-color:var(--l);background:var(--s2)"><h4 style="color:var(--g2)">Dados</h4>${kvr('WhatsApp',v.whatsapp||'-')}${kvr('Plano',c.plan_id?c.plan_id+' ('+(c.billing_period||'')+')':'cadastro manual',c.plan_id?undefined:'<i></i>')}${kvr('Válido até',fdt(c.expires_at),'<i></i>')}${kvr('Cadastro',fdt(v.criado),'<i></i>')}${kvr('Motos no site',String(v.motos),'<i></i>')}${kvr('Atividade',`${v.chat} chat · ${v.fichas} fichas · ${v.contratos} contratos · ${v.contatos} contatos`,'<i></i>')}</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><button class="btn" onclick="vcopiar('${esc(id)}')">Copiar tudo</button><button class="btn o" onclick="vsusp('${esc(id)}')">${v.suspenso?'Reativar site':'Suspender site'}</button><button class="btn o" onclick="vsync('${esc(id)}')">Sincronizar catálogo</button></div>
+<div class="nt" style="border-color:var(--l);background:var(--s2);margin-top:16px"><h4 style="color:var(--g2)">Senha</h4><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="mini" onclick="vnova('${esc(id)}')">Gerar nova senha</button><input id="vns" placeholder="ou digite uma senha (mín. 8)" style="flex:1;min-width:150px;padding:6px 10px"><button class="mini" onclick="vdef('${esc(id)}')">Definir</button></div></div>
+<div class="nt" style="border-color:var(--er);background:#ff6b6b0f;margin-top:16px"><h4 style="color:var(--er)">Zona de perigo</h4><div id="apg"><button class="btn dg" onclick="vapagarUI('${esc(id)}')">Apagar vendedor</button></div></div>`;
+try{const r=await sb.rpc('mestre_vendedor_senha',{p_id:id}),s=$('vs');if(!s)return;
+if(r.error)s.innerHTML=kvr('Senha','erro: '+r.error.message,'<i></i>');
+else if(!r.data.tem)s.innerHTML=`<div class="kv"><span>Senha</span><b style="color:var(--g2)">não registrada</b><i></i></div><p style="font-size:12px;color:var(--m);margin-top:6px">Conta criada antes do cofre: a senha antiga fica criptografada e não pode ser lida. Use “Gerar nova senha” abaixo para ver uma.</p>`;
+else s.innerHTML=kvr('Senha',r.data.senha)+(r.data.confere?'':'<p style="font-size:12px;color:var(--er);margin-top:6px">⚠ O vendedor trocou a própria senha depois: esta cópia está desatualizada. Gere uma nova.</p>')}catch(e){}}
+async function vrefresh(id){await carregar();vend(id)}
+async function vsusp(id){const v=V.find(x=>x.id==id);if(!confirm((v.suspenso?'Reativar':'Suspender')+' o site de '+v.nome+'?'))return;try{await acao({acao:'suspender',slug:v.slug,valor:!v.suspenso});toast(v.suspenso?'Site reativado.':'Site suspenso.');vrefresh(id)}catch(e){}}
+async function vsync(id){const v=V.find(x=>x.id==id);try{const r=await acao({acao:'sincronizar',slug:v.slug});toast(r.msg);vrefresh(id)}catch(e){}}
+async function vnova(id){const v=V.find(x=>x.id==id);if(!confirm('Gerar nova senha para '+v.email+'? A atual deixa de funcionar.'))return;try{await acao({acao:'senha',email:v.email});toast('Nova senha gerada.');vend(id)}catch(e){}}
+async function vdef(id){const s=$('vns').value;if(s.length<8)return toast('A senha precisa ter pelo menos 8 caracteres.');const{error}=await sb.rpc('mestre_definir_senha',{p_id:id,p_senha:s});if(error)return toast(error.message);toast('Senha definida.');vend(id)}
+function vcopiar(id){const v=V.find(x=>x.id==id),s=($('vs').querySelector('b')||{}).textContent||'';
+const t=`${v.nome}\n${(v.links||[]).map(l=>l.etiqueta+': '+l.endereco).join('\n')}\nLogin: ${v.email}\nSenha: ${s.includes(' ')?'(use Gerar nova senha)':s}`;cop(0,t)}
+function vapagarUI(id){const v=V.find(x=>x.id==id);$('apg').innerHTML=`<p style="font-size:13px;color:var(--m)">Apaga <b>${esc(v.nome)}</b>, as ${v.motos} motos, todos os pedidos, fichas, contratos e contatos dele e o login. <b style="color:var(--er)">Não tem volta.</b> Para confirmar, digite o endereço: <b>${esc(v.slug)}</b></p><input id="apc" placeholder="${esc(v.slug)}" autocomplete="off" style="margin:8px 0"><button class="btn dg" style="width:100%" onclick="vapagar('${esc(id)}')">Apagar definitivamente</button>`}
+async function vapagar(id){const v=V.find(x=>x.id==id),t=$('apc').value;try{const r=await acao({acao:'apagar',slug:v.slug,confirma:t});fechar();toast(r.msg);await carregar()}catch(e){}}
 window.addEventListener('hashchange',route);load();route();
 </script></body></html>
