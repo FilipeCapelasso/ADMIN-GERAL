@@ -1,454 +1,155 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0d0d12">
-<title>Admin Geral | Catálogo</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
-<link rel="apple-touch-icon" href="data:image/png;base64,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27ZtW7ly5fz585csXVK8vxgBNGmltWWJOXPmXHvtb086abS3iJNPDSLvjCmybfvJJ5984YUXDA5qE0NIGsbEKGktGOvYsaPRadKMMIsUoWfO+ahRo5YuXQqIDFFrPX/evDPPPFOT5sgZQwI44YQTvvv+O4bMyC+ldCgU+mTlytMmTmDonS2CdTAVb4ticjQ8MUaJHxNnqyXLEX+rpny98Jms/lpcBrjhcNj/NJHWlGB8VsjylYRDShReIM6FH6a65jYnZCiYSBLKWmsurD59+vTp0+fyyy/fvXv3s88+O3PmTK/OPiK+9eabJ5002tiG3teRd5ahE7inisqqiy686P333zMLtfYq4oxprROHOzjgYL4xRdbIbOp6wWEaOuWUUx599FGttfGWvvb667ffccdRRx0lpeKcEWkhhG8mQColOH/j9deJgAk3kygxm4lja/yXamrHNbhXjRa041KD2se6uaPJGKuoqNi6dVvv3r2TMsIQsby8vHD7du/+jIxo165dGeMATnXp/PwCzxxzqtsjMMa0gq1btiQejEZNIMnxIzNWWVk5Z87cysqKcDgUj9vZ2TlTp0yxQiEA0korrZBh9+7dH3nkkaKiotmzZ3PBjQq4efNmALBCIeZUIqSEODDiWGvO+QN//OP7778XDoWkkkrpjIyMSZMmjRo16vDDD8/Ozu7ateu7785/8MGHOOMOn66VDqIbv38sFTi01qNHjx6YO3DTD5tMycyysrIbbrxx0YcfCsHj8ThnXJM5rsbJVQmFQu++u2DunDmcMS0VczPkIHE0fZKaWcMDHQqFIuFwRUWFaXPr1q2eYUyaTCHx9evXe/l/CUbi67bU+o03Xv/Vr06OV8dBOENs23Y4HF60aHHhjh2cM1NstHv37gMHDuzRo+e2bVsN+letWlVQUNC3b18pFeOMAUitLGFt3Ljxq6+/NmY6Ivbu3btz585ExJARaARQSk6bdldpaanXk9NPP61nzx7Sloxzo2hXVVVZljV69ImzZ8/2FCTGsSZ/M2yAm4VhzN3S0tLXXn3VHIuuNXXr1u29994bPny4/8O//uZrcI8ZSiyn+jcGpJPszVKnfmVkZEybPs3UNVNKWZwvW7r0ggvO3717dygU4oIz7pBlWaFQ6K0337rsskuV1gmVtT53BdTR744dO2bn5BioGRx89dVXRsPnglsha/ny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">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seu site de vendas Honda — Vitrine, CDC e CNH</title>
+<meta name="description" content="Vitrine de motos, financiamento CDC e pré-contrato CNH com identidade própria. A partir de R$ 20/mês, ativação automática por Pix.">
 <style>
-:root{--bg:#f3f3f5;--cd:#fff;--tx:#17171c;--mu:#62626d;--bd:#e4e4ea;--r:#c80000;--ok:#1a8f4c;--wn:#b36b00;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--bg:#0d0d12;--cd:#16161d;--tx:#f1f1f4;--mu:#a4a4af;--bd:#2a2a34}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
-.w{max-width:min(1560px,100%);margin:0 auto;padding:0 clamp(14px,3vw,48px)}
-header{background:#0d0d12;color:#fff;border-bottom:3px solid var(--r);padding:calc(14px + env(safe-area-inset-top,0px)) 0 14px;position:sticky;top:0;z-index:20}
-header .w{display:flex;align-items:center;gap:12px;flex-wrap:wrap}header img{width:38px;height:38px;border-radius:9px;background:#fff;padding:4px}
-header h1{font-size:17px;margin:0;flex:1;min-width:150px}header small{display:block;color:#c9c9d3;font-weight:400;font-size:12px}
-button,select,input,textarea{font:inherit}
-.btn{border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:999px;padding:9px 16px;font-weight:600;cursor:pointer}
-.btn.red{background:var(--r);border-color:var(--r);color:#fff}.btn.sm{padding:6px 12px;font-size:13px}.btn:disabled{opacity:.5}
-header .btn{background:#1d1d26;border-color:#33333f;color:#fff}header .btn.red{background:var(--r);border-color:var(--r)}
-input,select,textarea{width:100%;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:12px;padding:10px 12px}
-textarea{min-height:150px;resize:vertical}label.l{display:block;font-size:13px;font-weight:600;margin:12px 0 4px;color:var(--mu)}
-.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.kp div{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:12px;text-align:center}.kp b{display:block;font-size:22px}.kp span{font-size:12px;color:var(--mu)}
-.fl{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.fl button{border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:13px}.fl button.on{background:#0d0d12;color:#fff;border-color:#0d0d12}
-.it{display:flex;gap:12px;background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:12px;margin:0 0 10px;align-items:center}
-.it img{width:84px;height:62px;object-fit:contain;background:var(--bg);border-radius:10px;flex:none}.it .g{flex:1;min-width:0}.it b{display:block}.it small{color:var(--mu);display:block}
-.it .ac{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.it.susp{opacity:.6}
-.tg{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:#e7f6ed;color:var(--ok);margin-right:4px}.tg.s{background:#ffecec;color:var(--r)}.tg.c{background:#f0f0f4;color:#444}
-@media (prefers-color-scheme:dark){.tg{background:#12301f}.tg.s{background:#3a1515}.tg.c{background:#26262f;color:#ccc}}
-.cd{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:0 0 14px}.cd h2{font-size:16px;margin:0 0 6px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pr{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:6px 0}
-.ch{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--bd);border-radius:999px;padding:5px 6px 5px 12px;margin:3px 4px 3px 0}.ch button{border:0;background:#0001;border-radius:50%;width:22px;height:22px;cursor:pointer;color:inherit}
-.fo{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.fo div{position:relative;width:96px}.fo img{width:96px;height:72px;object-fit:contain;background:var(--bg);border:1px solid var(--bd);border-radius:10px}.fo .x{position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;border:0;background:var(--r);color:#fff;cursor:pointer}.fo .m{display:flex;justify-content:space-between;margin-top:2px}.fo .m button{border:0;background:none;color:var(--mu);cursor:pointer;padding:0 6px}
-.ms{background:#fff8e1;border:1px solid #f0d98a;color:#5c4400;border-radius:12px;padding:10px 12px;margin:10px 0;font-size:14px}@media (prefers-color-scheme:dark){.ms{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}}
-.mu{color:var(--mu);font-size:13px}.lg{max-width:380px;margin:12vh auto 0;padding:0 16px}.lg h1{font-size:24px}
-.bar{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--bd);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.ck{display:flex;gap:8px;align-items:flex-start;font-size:14px}.ck input{width:auto;margin-top:4px}
-#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#17171c;color:#fff;padding:10px 18px;border-radius:999px;z-index:50;display:none;max-width:92vw;text-align:center}
+:root{--bg:#0a0a0b;--s:#151517;--s2:#1d1d20;--l:#2a2a2e;--t:#f5f5f4;--m:#a1a1a6;--g:#d4a63a;--g2:#f0cf74;--ok:#3ecf8e;--er:#ff6b6b}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:inherit;text-decoration:none}.w{max-width:1120px;margin:auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:20;background:#0a0a0bd9;backdrop-filter:blur(12px);border-bottom:1px solid var(--l)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;letter-spacing:.3px}.logo b{color:var(--g)}
+nav .lk{display:flex;gap:22px;color:var(--m);font-size:14px}nav .lk a:hover{color:var(--g2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 15px inherit;font-family:inherit;padding:12px 22px;border-radius:10px;background:linear-gradient(135deg,var(--g2),var(--g));color:#1a1305;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #d4a63a40}.btn.o{background:none;color:var(--t);border:1px solid var(--l)}.btn.o:hover{border-color:var(--g);box-shadow:none}.btn:disabled{opacity:.5;cursor:wait;transform:none}
+.hero{padding:96px 0 72px;text-align:center;background:radial-gradient(60% 50% at 50% 0,#d4a63a22,transparent)}
+.tag{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--g);border:1px solid #d4a63a55;padding:5px 12px;border-radius:99px;margin-bottom:22px}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.08;letter-spacing:-1.5px;max-width:860px;margin:0 auto 20px}h1 em{font-style:normal;color:var(--g)}
+.hero p{color:var(--m);max-width:620px;margin:0 auto 32px;font-size:18px}.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sec{padding:72px 0}h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.8px;text-align:center;margin-bottom:10px}.sub{color:var(--m);text-align:center;max-width:600px;margin:0 auto 40px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--s);border:1px solid var(--l);border-radius:16px;padding:26px;transition:.25s}.card:hover{border-color:#d4a63a66;transform:translateY(-3px)}
+.card .n{color:var(--g);font-weight:800;font-size:13px;letter-spacing:2px}.card h3{margin:8px 0 12px;font-size:20px}
+.card li{list-style:none;color:var(--m);font-size:14.5px;padding:3px 0 3px 22px;position:relative}.card li:before{content:"✓";position:absolute;left:0;color:var(--g)}
+.stat{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.stat div{background:var(--s);border:1px solid var(--l);border-radius:14px;padding:20px}.stat b{display:block;color:var(--g2);font-size:15px;margin-bottom:4px}.stat span{color:var(--m);font-size:14px}
+.tg{display:flex;gap:4px;background:var(--s);border:1px solid var(--l);border-radius:99px;padding:4px;width:max-content;margin:0 auto 32px}.tg button{border:0;background:none;color:var(--m);padding:9px 22px;border-radius:99px;cursor:pointer;font:600 14px inherit}.tg .on{background:var(--g);color:#1a1305}
+.pl{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:820px;margin:auto}
+.plan{background:var(--s);border:1px solid var(--l);border-radius:20px;padding:32px;position:relative}.plan.pr{border-color:var(--g);background:linear-gradient(180deg,#d4a63a14,var(--s))}
+.plan .bd{position:absolute;top:-12px;right:24px;background:var(--g);color:#1a1305;font:700 12px inherit;padding:4px 12px;border-radius:99px}
+.plan .pc{font-size:44px;font-weight:800;margin:10px 0 2px}.plan .pc small{font-size:15px;color:var(--m);font-weight:400}.plan .sv{color:var(--ok);font-size:13px;min-height:20px;margin-bottom:18px}.plan ul{margin-bottom:24px}.plan .btn{width:100%}
+details{background:var(--s);border:1px solid var(--l);border-radius:12px;padding:16px 20px;margin-bottom:10px;max-width:760px;margin-inline:auto}summary{cursor:pointer;font-weight:600}details p{color:var(--m);margin-top:10px;font-size:15px}
+footer{border-top:1px solid var(--l);padding:32px 0;color:var(--m);font-size:13px;text-align:center}
+.ov{position:fixed;inset:0;background:#000d;z-index:50;display:none;overflow:auto;padding:24px 12px}.ov.on{display:block}
+.bx{background:var(--s);border:1px solid var(--l);border-radius:20px;max-width:560px;margin:auto;padding:28px;animation:up .3s}@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.bx h3{font-size:22px;margin-bottom:4px}.bx .x{float:right;background:none;border:0;color:var(--m);font-size:24px;cursor:pointer}
+label{display:block;font-size:13px;color:var(--m);margin:14px 0 5px}input,select{width:100%;background:var(--bg);border:1px solid var(--l);color:var(--t);border-radius:10px;padding:12px;font:inherit}input:focus,select:focus{outline:0;border-color:var(--g)}
+.r2{display:grid;grid-template-columns:2fr 1fr;gap:10px}.msg{margin-top:14px;padding:12px;border-radius:10px;font-size:14px;display:none}.msg.er{display:block;background:#ff6b6b1f;color:var(--er)}.msg.ok{display:block;background:#3ecf8e1f;color:var(--ok)}
+.sl{display:flex;align-items:center;background:var(--bg);border:1px solid var(--l);border-radius:10px;padding-left:12px;color:var(--m);font-size:13px}.sl input{border:0}
+.qr{background:#fff;border-radius:14px;padding:12px;width:230px;margin:18px auto;display:block}.cp{display:flex;gap:8px}.cp input{font-size:12px}
+.pulse{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--g);margin-right:8px;animation:pl 1.2s infinite}@keyframes pl{50%{opacity:.25}}
+.nt{border:1px solid var(--ok);background:linear-gradient(180deg,#3ecf8e14,var(--s));border-radius:16px;padding:20px;margin-top:16px}.nt h4{color:var(--ok);margin-bottom:10px}
+.kv{display:grid;grid-template-columns:110px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--l);font-size:14px}.kv:last-child{border:0}.kv span{color:var(--m)}.kv b{word-break:break-all;font-weight:600}.kv button{background:var(--s2);border:1px solid var(--l);color:var(--g2);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px}
+.sk{height:200px;border-radius:16px;background:linear-gradient(90deg,var(--s),var(--s2),var(--s));background-size:200% 100%;animation:sk 1.2s infinite}@keyframes sk{to{background-position:-200% 0}}
+/* admin */
+#adm{display:none;min-height:100vh}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0}.tabs button{background:var(--s);border:1px solid var(--l);color:var(--m);border-radius:10px;padding:9px 16px;cursor:pointer;font:600 14px inherit}.tabs .on{color:#1a1305;background:var(--g);border-color:var(--g)}
+.kp{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.kp div{background:var(--s);border:1px solid var(--l);border-radius:14px;padding:16px}.kp b{font-size:26px;color:var(--g2);display:block}.kp span{font-size:12px;color:var(--m)}
+.tb{overflow-x:auto;border:1px solid var(--l);border-radius:14px;margin-top:14px}table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--l);white-space:nowrap}th{color:var(--m);font-weight:600;background:var(--s)}
+.pill{padding:2px 10px;border-radius:99px;font-size:12px;background:var(--s2)}.pill.pagamento_aprovado,.pill.ativa{color:var(--ok)}.pill.falha_ativacao,.pill.vencida,.pill.suspensa{color:var(--er)}.pill.aguardando_pagamento{color:var(--g2)}
+.mini{background:var(--s2);border:1px solid var(--l);color:var(--t);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:12px;margin-right:4px}
+#toast{position:fixed;right:16px;bottom:16px;z-index:99;max-width:360px}
+@media(max-width:720px){nav .lk{display:none}.kv{grid-template-columns:90px 1fr auto}}
+</style></head><body>
+<div id="site">
+<nav><div class="w"><a href="#" class="logo">STAR<b>SITES</b></a><div class="lk"><a href="#solucoes">Soluções</a><a href="#planos">Planos</a><a href="#beneficios">Benefícios</a><a href="#faq">Dúvidas</a></div><button class="btn" onclick="abrir()">Contratar agora</button></div></nav>
 
-.nav{display:flex;gap:6px;overflow-x:auto;width:100%;padding-top:2px}.nav button{border:1px solid #33333f;background:#1d1d26;color:#fff;border-radius:999px;padding:7px 16px;font-weight:600;cursor:pointer;white-space:nowrap}.nav button.on{background:var(--r);border-color:var(--r)}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:60;display:flex;align-items:flex-end;justify-content:center}.md{background:var(--cd);color:var(--tx);width:min(580px,100%);max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
-@media (min-width:700px){.ov{align-items:center}.md{border-radius:18px}}
-.md h2{margin:0 0 4px;font-size:19px}.dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:12px 0;font-size:14px}.dl dt{color:var(--mu)}.dl dd{margin:0;word-break:break-all}
-.lk{display:flex;gap:8px;align-items:center;border:1px solid var(--bd);border-radius:12px;padding:8px 10px;margin:6px 0}.lk div{flex:1;min-width:0}.lk b{display:block;font-size:13px}.lk small{color:var(--mu);word-break:break-all}
-.sec{background:#fff8e1;border:1px solid #f0d98a;color:#5c4400;border-radius:12px;padding:10px 12px;margin:10px 0;font-size:14px}@media (prefers-color-scheme:dark){.sec{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}}
-.pw{font:700 20px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;background:var(--bg);border:1px dashed var(--r);border-radius:12px;padding:10px;text-align:center;margin:8px 0;word-break:break-all}
-.rk{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:0 0 8px}.rk .n{font-size:20px;font-weight:800;text-align:center}.rk .b{height:8px;border-radius:99px;background:var(--bg);margin:6px 0;overflow:hidden}.rk .b i{display:block;height:100%;background:var(--r)}
-.pd{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:0 0 10px}.pd .t{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.pd small{color:var(--mu)}.pd dl{display:grid;grid-template-columns:max-content 1fr;gap:3px 12px;font-size:13.5px;margin:8px 0}.pd dt{color:var(--mu)}.pd dd{margin:0;word-break:break-word}
-@media (max-width:560px){.kp{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.it{flex-wrap:wrap}.it .ac{width:100%;justify-content:flex-start}}
+<header class="hero"><div class="w"><span class="tag">Para vendedores Honda</span>
+<h1>Tenha sua própria <em>estrutura digital</em> de vendas.</h1>
+<p>Apresente suas motos, receba interessados e facilite pedidos de financiamento — tudo com o seu nome, em links só seus. Pague no Pix e receba seus sites prontos em minutos.</p>
+<div class="cta"><a class="btn" href="#planos">Conhecer planos</a><a class="btn o" id="demo" href="#solucoes" target="_blank" rel="noopener">Ver demonstração</a></div></div></header>
 
-/* ===== cabeçalho com conta (minha senha / sair) e detalhes visuais ===== */
-header{position:relative}.hd-acc{position:absolute;top:16px;right:18px;display:flex;gap:8px;z-index:2}.hd-acc button{background:#ffffff14;color:#fff;border:1px solid #ffffff30;border-radius:999px;padding:8px 14px;font:600 13px inherit;cursor:pointer}.hd-acc button:hover{background:#ffffff26}
-@media(max-width:700px){.hd-acc{position:static;margin:10px 0 0;flex-wrap:wrap}}
-a.btn{text-decoration:none}.md a.btn,.lk a.btn{text-decoration:none!important}
+<section class="sec" id="solucoes"><div class="w"><h2>3 sistemas. 1 só contratação.</h2><p class="sub">Cada vendedor recebe links próprios, painel exclusivo e dados 100% separados dos demais.</p>
+<div class="grid">
+<div class="card"><span class="n">SITE 1</span><h3>Vitrine + painel do vendedor</h3><ul><li>Catálogo com fotos, modelos, cores e preços</li><li>Planos de consórcio e valores de parcelas</li><li>Botões de contato e captação de interessados</li><li>Você edita motos e preços no seu painel</li></ul></div>
+<div class="card"><span class="n">SITE 2</span><h3>CDC / Financiamento</h3><ul><li>Formulário simples para o cliente</li><li>Dados chegam direto para você</li><li>Pedidos organizados por status</li></ul></div>
+<div class="card"><span class="n">SITE 3</span><h3>CNH / Pré-contrato</h3><ul><li>Cliente preenche os dados da CNH sozinho</li><li>Envio automático ao vendedor responsável</li><li>Tudo organizado no seu painel</li></ul></div></div></div></section>
 
+<section class="sec" id="beneficios" style="background:var(--s)"><div class="w"><h2>Por que vale mais do que custa</h2><p class="sub">Uma única venda a mais no ano já paga o sistema por muitos anos.</p>
+<div class="stat"><div><b>Identidade própria</b><span>Seu nome, sua foto e links com o seu endereço.</span></div><div><b>De qualquer aparelho</b><span>Celular, tablet ou computador.</span></div><div><b>Leads organizados</b><span>Nenhum interessado se perde no WhatsApp.</span></div><div><b>Ativação automática</b><span>Pagou o Pix, está no ar. Sem espera.</span></div><div><b>Suporte e melhorias</b><span>Correções e atualizações incluídas.</span></div><div><b>Dados protegidos</b><span>Cada vendedor enxerga só o que é seu.</span></div></div></div></section>
 
-/* ===== perfil do vendedor (senha visível, troca e exclusão) — acompanha o tema claro/escuro ===== */
-.pf-h{display:flex;gap:14px;align-items:center;margin-bottom:12px}.pf-h h2{margin:0 0 3px}.pf-av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c80000,#7a0a0a);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:800;flex:none}
-.pf-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pf-g>div{background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;min-width:0}.pf-g small{display:block;color:var(--mu);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;font-weight:700}.pf-g b{display:block;font-size:14.5px;word-break:break-all;margin-top:2px}
-.pf-s{margin-top:16px;border:1px solid var(--bd);border-radius:16px;padding:14px 16px;background:var(--cd)}.pf-s h3{margin:0 0 10px;font-size:15.5px}
-.pwr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pwr .pw{flex:1;min-width:150px;font:700 18px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.5px;background:var(--bg);border:1px dashed var(--bd);border-radius:12px;padding:12px 14px;word-break:break-all;color:var(--mu);user-select:all;text-align:left;margin:0}.pwr .pw.on{color:#111;background:#fffbe8;border-color:#e6c34d}
-.pw-i{font-size:13px;color:var(--mu);margin:8px 0 12px;line-height:1.5}.pw-i.ok{color:#17803d}.pw-i.warn{color:#8a4b00;background:#fff7e6;border:1px solid #f3d9a4;border-radius:10px;padding:8px 10px}
-.pwn{display:flex;gap:8px;align-items:center;margin:4px 0 10px}.pwn input{flex:1;margin:0}.pwn .btn{width:auto;white-space:nowrap}
-.dz{background:#fff5f5;border:1px solid #f1c4c4;border-radius:14px;padding:14px;margin-top:8px;color:#2b1a1c}.dz p{margin:0 0 10px;line-height:1.5}.dz .mu{color:#6b4a4e}
-.dz-lk{margin-top:18px;padding-top:14px;border-top:1px dashed var(--bd);text-align:center}.btn.dg{color:#b00020;border-color:#e7b4bc;background:var(--cd)}.btn.dg:hover{background:#fff0f2}
-.btn.dg-b{background:#b00020;color:#fff;border-color:#b00020}.btn.dg-b:disabled{opacity:.4;cursor:not-allowed}
-@media(prefers-color-scheme:dark){.pwr .pw.on{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}.pw-i.ok{color:#5fd08a}.pw-i.warn{background:#2d2610;border-color:#6b5a1d;color:#f3dd8d}
- .dz{background:#2a1215;border-color:#6b2a30;color:#f1dcdf}.dz .mu{color:#d3a9ae}.btn.dg{color:#ff8a98;border-color:#6b2a30}.btn.dg:hover{background:#2a1215}.dz input{background:#16161d}}
-@media(max-width:520px){.pf-g{grid-template-columns:1fr}}
+<section class="sec" id="planos"><div class="w"><h2>Escolha seu plano</h2><p class="sub">Pix, sem cartão. Mensal: 30 dias de acesso por pagamento. Anual: 365 dias à vista com desconto.</p>
+<div class="tg"><button id="bm" class="on" onclick="per('mensal')">Mensal</button><button id="ba" onclick="per('anual')">Anual (economize)</button></div>
+<div class="pl" id="pl"><div class="sk"></div><div class="sk"></div></div>
+<p class="sub" style="margin-top:24px;font-size:13px">Renovação: ao vencer, o acesso é suspenso (seus dados ficam guardados) e volta assim que você pagar um novo Pix. Não há débito automático. Suporte prioritário e atendimento estendido do Premium seguem horário comercial estendido, não 24h.</p></div></section>
 
-.te-s{padding:10px 12px;border-radius:12px;font-weight:700;margin:0 0 10px}.te-s.ok{background:#e9f8ef;color:#17803d}.te-s.er{background:#fdecec;color:#b00020}
-.te-i{border:1px solid #ececf2;border-radius:12px;padding:10px 12px;margin-bottom:8px}.te-i.er{border-color:#f1c4c4;background:#fff7f7}.te-i b{display:block}.te-i small{color:#7a7a88}.te-i p{margin:6px 0 0;font-size:13px;line-height:1.45;word-break:break-word}
+<section class="sec" id="faq" style="background:var(--s)"><div class="w"><h2>Dúvidas frequentes</h2><p class="sub"></p>
+<details><summary>Em quanto tempo meus sites ficam prontos?</summary><p>Assim que o Pix é confirmado, a ativação é automática: você vê na hora seus links, e-mail e senha de acesso.</p></details>
+<details><summary>Meus dados se misturam com os de outros vendedores?</summary><p>Não. Cada vendedor tem isolamento total: só você vê seus interessados, fichas e contratos.</p></details>
+<details><summary>E se meu plano vencer?</summary><p>Os sites são suspensos, mas nada é apagado. Pagando de novo, tudo volta como estava.</p></details>
+<details><summary>Como funciona a renovação?</summary><p>Você gera um novo Pix no mesmo endereço. Se renovar antes de vencer, o tempo novo soma ao que resta.</p></details>
+<details><summary>Posso trocar de plano?</summary><p>Sim, na renovação você escolhe Essencial ou Premium.</p></details></div></section>
+<footer><div class="w">© <span id="y"></span> StarSites · Sistemas para vendedores Honda · <a href="#admin" style="color:var(--m)">Área do dono</a></div></footer>
+</div>
 
-/* ===== adaptação a qualquer monitor: trava contra rolagem lateral e topo compacto em telas baixas ===== */
-html,body{max-width:100%;overflow-x:clip}
-@media(max-height:700px){.kp>div{padding:10px}.it{padding:10px 12px}}
-</style>
-</head>
-<body>
-<div id="app"></div><div id="toast" role="status"></div>
+<div class="ov" id="ov"><div class="bx" id="bx"></div></div>
+
+<div id="adm"><div class="w" style="padding-top:20px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="logo">STAR<b>SITES</b> · Admin</span><span><button class="mini" onclick="go('')">Ver site</button><button class="mini" onclick="sair()">Sair</button></span></div><div id="ad"></div></div></div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 const SB_URL='https://qrmwgqkiwoenlkfzjazs.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFybXdncWtpd29lbmxrZnpqYXpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4MDc3OTIsImV4cCI6MjEwNjM4Mzc5Mn0.lhgkQS_WcB55uG0SKk0ngQgpc9oruFRt2H2D8orjNnc';
-const sb=supabase.createClient(SB_URL,SB_KEY);
-const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const brl=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-const toast=t=>{const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',4200)};
-const CATS0=['Street','Adventure','Off Road','Big Trail','Motores e Máquinas'];
-let TAB='catalogo',VL=[],C=[],ST={vendedores:0,motos:{}},H=[],F={q:'',cat:'Todas',st:'todas'},E=null,E0='',NEW=false,EID=null,SYNC_WAIT=4000;
-const nz=t=>String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-const head=(s,off)=>`<header><div class="w"><img alt="" src="data:image/png;base64,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"><h1>Admin Geral<small>${s||'Painel do administrador'} · versão 27/10 (senha visível + excluir)</small></h1>${off?'':`<div class="hd-acc"><button type="button" onclick="trocaSenha()">🔑 Minha senha</button><button type="button" onclick="sair()">Sair</button></div>`}${off?'':`<nav class="nav">${[['catalogo','Catálogo'],['vendedores','Vendedores'],['pedidos','Pedidos'],['ranking','Ranking'],['config','Configurações']].map(a=>`<button class="${TAB===a[0]?'on':''}" onclick="go('${a[0]}')">${a[1]}</button>`).join('')}</nav>`}</div></header>`;
+const sb=supabase.createClient(SB_URL,SB_KEY),$=i=>document.getElementById(i),R=n=>'R$ '+Number(n).toFixed(2).replace('.',',');
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let planos=[],periodo='mensal',pub={},poll=null;$('y').textContent=new Date().getFullYear();
+const FB=[{id:'essencial',name:'Essencial',monthly_price:20,annual_price:210,benefits:['Vitrine + painel do vendedor','Site CDC','Site CNH','1 ano de suporte técnico','Correções e manutenção']},{id:'premium',name:'Premium',monthly_price:25,annual_price:260,benefits:['Tudo do Essencial','Suporte prioritário e atendimento estendido','Novas ideias e melhorias','Personalizações no escopo','Prioridade nas atualizações']}];
+async function load(){try{const{data,error}=await sb.rpc('ps_publico');if(error)throw error;pub=data;planos=data.planos.length?data.planos:FB;if(data.demo)$('demo').href=data.demo}catch(e){planos=FB}draw()}
+function per(p){periodo=p;$('bm').className=p=='mensal'?'on':'';$('ba').className=p=='anual'?'on':'';draw()}
+function draw(){$('pl').innerHTML=planos.map((p,i)=>{const a=periodo=='anual',pr=a?p.annual_price:p.monthly_price,sv=p.monthly_price*12-p.annual_price;
+return `<div class="plan ${i?'pr':''}">${i?'<span class="bd">MAIS COMPLETO</span>':''}<h3>${esc(p.name)}</h3><div class="pc">${R(pr)}<small>${a?' / ano à vista':' / mês'}</small></div><div class="sv">${a?`Economia de ${R(sv)} vs. 12 mensalidades`:'Acesso por 30 dias após cada pagamento'}</div><ul class="card" style="padding:0;border:0;background:none">${(p.benefits||[]).map(b=>`<li>${esc(b)}</li>`).join('')}</ul><button class="btn" onclick="abrir('${esc(p.id)}')">Contratar ${esc(p.name)}</button></div>`}).join('')}
+const slugify=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
+function abrir(id){stop();$('ov').classList.add('on');document.body.style.overflow='hidden';const ps=planos.length?planos:FB;
+$('bx').innerHTML=`<button class="x" onclick="fechar()">×</button><h3>Contratar</h3><p style="color:var(--m);font-size:14px">Preencha seus dados. O e-mail será seu login.</p>
+<label>Nome completo</label><input id="f_n" autocomplete="name"><label>E-mail</label><input id="f_e" type="email" autocomplete="email"><label>WhatsApp (com DDD)</label><input id="f_t" inputmode="tel" placeholder="68 99999-0000">
+<label>Concessionária ou loja</label><input id="f_l"><div class="r2"><div><label>Cidade</label><input id="f_c"></div><div><label>UF</label><input id="f_u" maxlength="2" placeholder="AC"></div></div>
+<label>Seu endereço nos links</label><div class="sl">seusite.com/<input id="f_s" placeholder="nome-da-loja"></div>
+<div class="r2"><div><label>Plano</label><select id="f_p">${ps.map(p=>`<option value="${esc(p.id)}" ${p.id==id?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div><div><label>Modalidade</label><select id="f_m"><option value="mensal" ${periodo=='mensal'?'selected':''}>Mensal</option><option value="anual" ${periodo=='anual'?'selected':''}>Anual</option></select></div></div>
+<div id="f_msg" class="msg"></div><button class="btn" id="f_b" style="width:100%;margin-top:18px" onclick="enviar()">Gerar Pix</button>`;
+$('f_l').oninput=()=>{if(!$('f_s').dataset.m)$('f_s').value=slugify($('f_l').value)};$('f_s').oninput=e=>{e.target.dataset.m=1;e.target.value=slugify(e.target.value)}}
+function fechar(){stop();$('ov').classList.remove('on');document.body.style.overflow=''}function stop(){clearInterval(poll)}
+const msg=(t,c)=>{const m=$('f_msg');m.className='msg '+c;m.textContent=t}
+async function enviar(){const b=$('f_b');b.disabled=true;b.textContent='Gerando Pix...';
+try{const{data,error}=await sb.rpc('ps_criar_pedido',{p:{nome:$('f_n').value,email:$('f_e').value,telefone:$('f_t').value,loja:$('f_l').value,cidade:$('f_c').value,estado:$('f_u').value,slug:$('f_s').value,plano:$('f_p').value,periodo:$('f_m').value}});
+if(error)throw error;localStorage.setItem('ps_tk',data.token);pix(data)}catch(e){msg(e.message||'Erro ao gerar o Pix.','er');b.disabled=false;b.textContent='Gerar Pix'}}
+function pix(d){$('bx').innerHTML=`<button class="x" onclick="fechar()">×</button><h3>Pague ${R(d.valor)} no Pix</h3><p style="color:var(--m);font-size:14px">Abra o app do seu banco e escaneie, ou use o Pix Copia e Cola.</p>
+<img class="qr" alt="QR Code Pix" src="data:image/png;base64,${d.qr64}"><div class="cp"><input id="cc" readonly value="${esc(d.qr)}"><button class="btn" onclick="cop('cc')">Copiar</button></div>
+<p style="margin-top:18px;font-size:14px;color:var(--m)"><span class="pulse"></span>Aguardando confirmação do pagamento...</p><button class="btn o" style="width:100%;margin-top:12px" onclick="chk(\'${d.token}\',1)">Já paguei — verificar agora</button><div id="f_msg" class="msg"></div>`;
+stop();poll=setInterval(()=>chk(d.token),4000)}
+async function chk(t,man){try{const{data,error}=await sb.rpc('ps_verificar',{p_token:t});if(error)throw error;
+if(data.status=='pagamento_aprovado'){stop();localStorage.removeItem('ps_tk');ok(data)}
+else if(['cancelado','expirado'].includes(data.status)){stop();msg('Este Pix expirou ou foi cancelado. Gere um novo.','er')}
+else if(data.status=='falha_ativacao'){stop();msg('Pagamento recebido! A ativação precisa de revisão manual — o suporte já foi avisado. Guarde seu e-mail.','er')}
+else if(man)msg('Ainda não identificamos o pagamento. Aguarde alguns segundos.','ok')}catch(e){if(man)msg(e.message,'er')}}
+function cop(id,v){const x=v!==undefined?v:$(id).value;navigator.clipboard.writeText(x).then(()=>toast('Copiado!'),()=>{})}
+function ok(d){const k=d.dados,L=d.links,row=(a,b)=>`<div class="kv"><span>${a}</span><b>${esc(b)}</b><button data-v="${esc(b)}" onclick="cop(0,this.dataset.v)">copiar</button></div>`;
+const all=`Vitrine: ${L.vitrine}\nCDC: ${L.cdc}\nCNH: ${L.cnh}\nAdmin: ${L.admin}\nLogin: ${k.email}\nSenha: ${d.senha||'(a sua senha atual)'}`;
+$('bx').innerHTML=`<button class="x" onclick="fechar()">×</button><h3>🎉 Pagamento confirmado!</h3><p style="color:var(--m);font-size:14px">Seus sites estão no ar. Salve estas informações agora.</p>
+<div class="nt"><h4>Seus dados</h4>${row('Nome',k.nome)}${row('Loja',k.loja)}${row('Cidade',k.cidade+' - '+k.estado)}${row('WhatsApp',k.telefone)}${row('Plano',d.plano+' ('+d.periodo+') · '+R(d.valor))}${d.vence?row('Válido até',new Date(d.vence).toLocaleDateString('pt-BR')):''}</div>
+<div class="nt"><h4>Seus links</h4>${row('Vitrine',L.vitrine)}${row('CDC',L.cdc)}${row('CNH',L.cnh)}${row('Painel admin',L.admin)}</div>
+<div class="nt"><h4>Acesso ao painel</h4>${row('E-mail',k.email)}${d.senha?row('Senha',d.senha):'<div class="kv"><span>Senha</span><b>Use a senha que você já tinha</b><i></i></div>'}${d.senha?'<p style="font-size:12px;color:var(--m);margin-top:8px">⚠ A senha aparece só desta vez. Copie agora e troque depois no painel.</p>':''}</div>
+<button class="btn" style="width:100%;margin-top:16px" onclick="cop(0,${esc(JSON.stringify(all)).replace(/&quot;/g,'&quot;')})">Copiar tudo</button><a class="btn o" style="width:100%;margin-top:10px" href="${esc(L.admin)}" target="_blank" rel="noopener">Entrar no meu painel</a>`}
+function toast(t,html){const e=$('toast');e.innerHTML=html||`<div class="card" style="padding:12px 18px;border-color:var(--g)">${esc(t)}</div>`;clearTimeout(toast.t);toast.t=setTimeout(()=>e.innerHTML='',html?12000:2200)}
 
-/* ---------- login ---------- */
-function login(msg){
-  $('#app').innerHTML=head('Acesso restrito',true)+`<div class="lg"><h1>Administrador geral</h1>${msg?`<div class="ms">${esc(msg)}</div>`:''}
-  <input id="em" type="email" placeholder="E-mail" autocomplete="username" aria-label="E-mail"><div style="height:8px"></div>
-  <input id="se" type="password" placeholder="Senha" autocomplete="current-password" aria-label="Senha" onkeydown="event.key==='Enter'&&doLogin()"><div style="height:12px"></div>
-  <button class="btn red" style="width:100%" onclick="doLogin()">Entrar</button></div>`}
-async function doLogin(){
-  const email=$('#em').value.trim(),password=$('#se').value;if(!email||!password)return toast('Informe e-mail e senha');
-  const{error}=await sb.auth.signInWithPassword({email,password});if(error)return toast('E-mail ou senha incorretos');
-  start()}
-async function sair(){await sb.auth.signOut();login()}
-async function start(){
-  const{data:s}=await sb.auth.getSession();if(!s||!s.session)return login();
-  const{data:dono,error}=await sb.rpc('sou_dono');
-  if(error||!dono){await sb.auth.signOut();return login('Este login não é do administrador geral. Cadastre o e-mail do dono no banco (tabela donos) e entre de novo.')}
-  await load()}
-
-/* ---------- lista ---------- */
-async function load(){
-  TAB='catalogo';
-  $('#app').innerHTML=head()+'<div class="w"><p class="mu" style="margin-top:20px">Carregando catálogo…</p></div>';
-  const[a,b,hh]=await Promise.all([sb.from('catalogo_mestre').select('*').order('ordem').order('created_at'),sb.rpc('mestre_estatisticas'),sb.rpc('site_sync_historico')]);
-  H=(hh&&hh.data)||[];
-  if(a.error){$('#app').innerHTML=head('',true)+`<div class="w"><div class="ms" style="margin-top:20px">Não consegui carregar o catálogo geral: ${esc(a.error.message)}.<br>Rode o SQL do catálogo geral no Supabase e recarregue.</div></div>`;return}
-  C=a.data||[];ST={vendedores:0,motos:{}};
-  if(b.data){ST.vendedores=b.data.vendedores||0;(b.data.motos||[]).forEach(x=>ST.motos[x.id]=x)}
-  lista()}
-function minP(m){const p=(m.planos||[]).filter(x=>x.valor>0).sort((x,y)=>x.valor-y.valor)[0];return p?`${p.parcelas}x ${brl(p.valor)}`:'—'}
-function lista(){
-  const cats=['Todas',...[...new Set([...CATS0,...C.map(m=>m.categoria).filter(Boolean)])]];
-  const q=nz(F.q);
-  const f=C.filter(m=>(F.cat==='Todas'||m.categoria===F.cat)&&(F.st==='todas'||(F.st==='ativas'?m.ativo:!m.ativo))&&(!q||nz(m.nome+' '+(m.modelo||'')).includes(q)));
-  const ativas=C.filter(m=>m.ativo).length;
-  $('#app').innerHTML=head()+`<div class="w">
-  <div class="kp"><div><b>${ST.vendedores}</b><span>vendedores</span></div><div><b>${C.length}</b><span>motos no catálogo</span></div><div><b>${ativas}</b><span>ativas</span></div><div><b>${C.length-ativas}</b><span>suspensas</span></div></div>
-  <div class="fl"><button class="btn red sm" style="border-radius:999px;color:#fff;background:var(--r)" onclick="novo()">+ Nova moto</button><button onclick="syncSite()">⟳ Atualizar do site agora</button><button onclick="sincro()">↻ Sincronizar vendedores</button></div>
-  ${faixa()}
-  <input id="bq" type="search" placeholder="Buscar moto" value="${esc(F.q)}" oninput="F.q=this.value;lista2()">
-  <div class="fl">${cats.map(c=>`<button class="${F.cat===c?'on':''}" onclick="F.cat='${esc(c)}';lista()">${esc(c)}</button>`).join('')}</div>
-  <div class="fl">${[['todas','Todas'],['ativas','Ativas'],['susp','Suspensas']].map(a=>`<button class="${F.st===a[0]?'on':''}" onclick="F.st='${a[0]}';lista()">${a[1]}</button>`).join('')}</div>
-  <p class="mu">O que você alterar aqui muda automaticamente em <b>todos</b> os sites. Campos que um vendedor personalizou ficam protegidos, a menos que você use “forçar em todos”. Exceção: planos e valores do consórcio são sempre os do catálogo (o vendedor não edita).</p>
-  <div id="ls">${f.map(card).join('')||'<p class="mu">Nenhuma moto.</p>'}</div></div>`;
-  const q2=$('#bq');if(q2&&document.activeElement!==q2){}}
-function lista2(){const q=nz(F.q);const f=C.filter(m=>(F.cat==='Todas'||m.categoria===F.cat)&&(F.st==='todas'||(F.st==='ativas'?m.ativo:!m.ativo))&&(!q||nz(m.nome+' '+(m.modelo||'')).includes(q)));$('#ls').innerHTML=f.map(card).join('')||'<p class="mu">Nenhuma moto.</p>'}
-function card(m){
-  const s=ST.motos[m.id]||{vendedores:0,personalizados:0},f0=(m.fotos||[])[0];
-  return `<div class="it ${m.ativo?'':'susp'}">${f0?`<img src="${esc(f0)}" alt="" loading="lazy">`:'<img alt="">'}
-  <div class="g"><b>${esc(m.nome)}${m.modelo?' '+esc(m.modelo):''}</b><small>${esc(m.categoria||'Sem categoria')} · consórcio a partir de ${esc(minP(m))} · à vista ${m.preco?brl(m.preco):'não informado'}</small>
-  <small>${m.ativo?'<span class="tg">ATIVA</span>':'<span class="tg s">SUSPENSA</span>'}<span class="tg c">${(m.cores||[]).length} cor(es)</span><span class="tg c">${m.sync_site===false?'planos manuais':'planos do site'}</span><span class="tg c">${s.vendedores} vendedor(es)</span>${s.personalizados?`<span class="tg c">${s.personalizados} personalizado(s)</span>`:''}</small></div>
-  <div class="ac"><button class="btn sm" onclick="mv('${m.id}',-1)" title="Subir">↑</button><button class="btn sm" onclick="mv('${m.id}',1)" title="Descer">↓</button><button class="btn red sm" onclick="edit('${m.id}')">Editar</button><button class="btn sm" onclick="susp('${m.id}',${m.ativo})">${m.ativo?'Suspender':'Reativar'}</button></div></div>`}
-async function mv(id,d){const i=C.findIndex(m=>m.id===id),j=i+d;if(j<0||j>=C.length)return;[C[i],C[j]]=[C[j],C[i]];
-  await Promise.all(C.map((m,k)=>{if(m.ordem===k)return;m.ordem=k;return sb.rpc('mestre_salvar',{p_id:m.id,p:{ordem:k},p_forcar:false})}));lista();toast('Ordem salva (vale para vendedores novos e motos novas)')}
-async function susp(id,ativa){
-  const m=C.find(x=>x.id===id);
-  if(!confirm(ativa?`Suspender “${m.nome}” em TODOS os sites dos vendedores? Ela some da vitrine de todos e eles não conseguem reativar.`:`Reativar “${m.nome}” em todos os sites?`))return;
-  const{data,error}=await sb.rpc('mestre_suspender',{p_id:id,p_suspender:!!ativa});if(error)return toast('Erro: '+error.message);toast(data);load()}
-async function sincro(){
-  if(!confirm('Verificar todos os vendedores e criar as motos do catálogo que faltarem? Não altera nada que já existe.'))return;
-  const{data,error}=await sb.rpc('mestre_sincronizar_todos');if(error)return toast('Erro: '+error.message);alert(data);load()}
-
-
-
-async function trocaSenha(){
-  const n=prompt('Nova senha de acesso do admin geral (mínimo 8 caracteres):');if(n===null)return;
-  if(n.length<8)return toast('A senha precisa ter pelo menos 8 caracteres');
-  if(prompt('Repita a nova senha:')!==n)return toast('As senhas não conferem');
-  const{error}=await sb.auth.updateUser({password:n});toast(error?'Erro: '+error.message:'Senha alterada com sucesso!')}
-
-
-/* ---------- configurações gerais: vídeo "Como funciona o consórcio" (vale para TODOS os vendedores) ---------- */
-function cfVid(u){
-  if(!u)return'<p class="mu">Nenhum vídeo definido: o botão “Como funciona” não aparece nos sites.</p>';
-  const vm=/vimeo\.com\/(?:video\/)?(\d+)/.exec(u),y=/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/.exec(u);
-  if(vm)return`<iframe src="https://player.vimeo.com/video/${vm[1]}" allowfullscreen style="width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000"></iframe>`;
-  if(y)return`<iframe src="https://www.youtube.com/embed/${y[1]}" allowfullscreen style="width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000"></iframe>`;
-  return`<video controls playsinline src="${esc(u)}" style="width:100%;aspect-ratio:16/9;border-radius:14px;background:#000"></video>`}
-async function config(){
-  TAB='config';$('#app').innerHTML=head()+'<div class="w"><p class="mu" style="margin-top:20px">Carregando…</p></div>';
-  const r=await sb.rpc('config_publica');const c=(r&&r.data)||{};
-  $('#app').innerHTML=head()+`<div class="w" style="padding-top:14px"><div class="cd"><h2>Vídeo “Como funciona o consórcio”</h2>
-  <p class="mu">Aparece em <b>todos os sites dos vendedores</b>: botão <b>▶ Como funciona</b> no topo e dentro do detalhe de cada moto. Cole o link do YouTube ou do Vimeo, ou envie um vídeo (MP4 ou WebM).</p>
-  <label class="l" for="cf_t">Título da janela do vídeo</label><input id="cf_t" value="${esc(c.video_titulo||'Como funciona o consórcio Honda')}">
-  <label class="l" for="cf_v">Link do vídeo</label><input id="cf_v" placeholder="https://www.youtube.com/watch?v=..." value="${esc(c.video_como_funciona||'')}" oninput="$('#cf_p').innerHTML=cfVid(this.value.trim())">
-  <div style="margin-top:12px"><input id="cf_f" type="file" accept="video/mp4,video/webm" onchange="cfUp(this.files[0])"><p class="mu">Ou envie do aparelho (até 50 MB).</p></div>
-  <div id="cf_p" style="margin-top:10px">${cfVid(c.video_como_funciona||'')}</div>
-  <div class="bar"><button class="btn red" onclick="cfSalva()">Salvar para todos os vendedores</button><button class="btn" onclick="cfLimpa()">Remover vídeo</button></div></div>
-  <div class="cd" style="margin-top:14px"><h2>Dados da loja</h2><p class="mu">Aparecem em <b>todos os sites dos vendedores</b>, no bloco “Visite a loja” com o botão <b>Como chegar</b>. Se um vendedor tiver endereço ou horário próprios no perfil, o dele tem prioridade.</p>
-  <label class="l" for="lj_n">Nome da loja</label><input id="lj_n" value="${esc(c.loja_nome||'')}" placeholder="Ex.: Star Motos · Grupo Star">
-  <label class="l" for="lj_e">Endereço</label><input id="lj_e" value="${esc(c.loja_endereco||'')}" placeholder="Rua, número, bairro, cidade">
-  <label class="l" for="lj_t">Telefone</label><input id="lj_t" value="${esc(c.loja_telefone||'')}" placeholder="(68) 3302-3080">
-  <label class="l" for="lj_h">Horário de atendimento (opcional)</label><input id="lj_h" value="${esc(c.loja_horario||'')}" placeholder="Ex.: Seg a Sex, 8h às 18h · Sáb, 8h às 12h">
-  <label class="l" for="lj_m">Link do mapa (opcional)</label><input id="lj_m" value="${esc(c.loja_maps||'')}" placeholder="https://maps.app.goo.gl/... (se vazio, o mapa é montado pelo endereço)">
-  <div class="bar"><button class="btn red" onclick="ljSalva()">Salvar dados da loja</button></div></div></div>`}
-async function ljSalva(){
-  const g=i=>(document.getElementById(i).value||'').trim(),m=g('lj_m');
-  if(m&&!/^https?:\/\//i.test(m))return toast('O link do mapa precisa começar com https://');
-  const{data,error}=await sb.rpc('mestre_config_salvar',{p:{loja_nome:g('lj_n'),loja_endereco:g('lj_e'),loja_telefone:g('lj_t'),loja_horario:g('lj_h'),loja_maps:m}});
-  if(error)return toast('Erro: '+error.message);toast(data||'Salvo');config()}
-async function cfUp(f){
-  if(!f)return;if(f.size>50*1024*1024)return toast('O vídeo passa de 50 MB: envie um arquivo menor ou use um link do YouTube');
-  toast('Enviando vídeo…');
-  const ext=(f.name.split('.').pop()||'mp4').toLowerCase().replace(/[^a-z0-9]/g,'')||'mp4',path='mestre/video-'+(crypto.randomUUID?crypto.randomUUID():Date.now())+'.'+ext;
-  const{error}=await sb.storage.from('midia').upload(path,f,{contentType:f.type||'video/mp4',upsert:false});
-  if(error)return toast('Não consegui enviar: '+error.message);
-  const u=sb.storage.from('midia').getPublicUrl(path).data.publicUrl;$('#cf_v').value=u;$('#cf_p').innerHTML=cfVid(u);toast('Vídeo enviado. Clique em Salvar para publicar.')}
-async function cfSalva(){
-  const u=$('#cf_v').value.trim(),t=$('#cf_t').value.trim();
-  if(u&&!/^https?:\/\//i.test(u))return toast('O link precisa começar com https://');
-  const{data,error}=await sb.rpc('mestre_config_salvar',{p:{video_como_funciona:u,video_titulo:t}});
-  if(error)return toast('Erro: '+error.message);toast(data||'Salvo');config()}
-async function cfLimpa(){if(!confirm('Remover o vídeo de todos os sites?'))return;$('#cf_v').value='';await cfSalva()}
-
-/* ---------- navegação ---------- */
-function go(t){TAB=t;({catalogo:load,vendedores:vendedores,pedidos:pedidos,ranking:ranking,config:config})[t]()}
-const copiar=t=>navigator.clipboard.writeText(t).then(()=>toast('Copiado!'),()=>toast('Não foi possível copiar'));
-const fechaMd=()=>{const o=$('#ov');if(o)o.remove()};
-function modal(html){fechaMd();const o=document.createElement('div');o.id='ov';o.className='ov';o.onclick=e=>{if(e.target===o)fechaMd()};o.innerHTML=`<div class="md" role="dialog">${html}</div>`;document.body.appendChild(o)}
-const tel=t=>String(t||'').replace(/\D/g,'').replace(/^55(?=\d{10,11}$)/,'');
-const waLink=(t,msg)=>{const d=tel(t);return d.length>=10?'https://wa.me/55'+d+(msg?'?text='+encodeURIComponent(msg):''):''};
-const dtc=s=>{try{return new Date(s).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return s}};
-
-/* ---------- vendedores ---------- */
-async function carregaV(){const r=await sb.rpc('mestre_vendedores');if(r.error){toast('Erro: '+r.error.message);return false}VL=r.data||[];return true}
-async function vendedores(){
-  TAB='vendedores';$('#app').innerHTML=head()+'<div class="w"><p class="mu" style="margin-top:20px">Carregando vendedores…</p></div>';
-  if(!await carregaV())return;
-  const tot=v=>v.chat+v.fichas+v.contratos+v.contatos;
-  $('#app').innerHTML=head()+`<div class="w"><div class="kp"><div><b>${VL.length}</b><span>vendedores</span></div><div><b>${VL.filter(v=>!v.suspenso).length}</b><span>ativos</span></div><div><b>${VL.filter(v=>v.suspenso).length}</b><span>suspensos</span></div><div><b>${VL.reduce((a,v)=>a+tot(v),0)}</b><span>pedidos e dados</span></div></div>
-  <div class="fl"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="novoV()">+ Novo vendedor</button><button class="btn sm" onclick="testarTodos()">🧪 Testar entrega de todos</button></div>
-  ${VL.map(v=>`<div class="it ${v.suspenso?'susp':''}"><div class="g"><b>${esc(v.nome)}</b><small>${esc(v.email||'sem e-mail')} · /${esc(v.slug)}</small>
-  <small>${v.suspenso?'<span class="tg s">SUSPENSO</span>':'<span class="tg">ATIVO</span>'}<span class="tg c">${v.motos} motos</span><span class="tg c">${tot(v)} pedidos/dados</span></small></div>
-  <div class="ac"><button class="btn red sm" onclick="perfil('${v.id}')">Perfil</button></div></div>`).join('')||'<p class="mu">Nenhum vendedor.</p>'}</div>`}
-function acessosTxt(v,senha){
-  const L=(v.links||[]);const lk=n=>(L.find(x=>x.etiqueta.startsWith(n))||{}).endereco||'';
-  return `Olá, ${v.nome}! Seguem os seus acessos:\n\n🏍️ Seu site de vendas: ${lk('Vitrine')}\n📝 Ficha de financiamento (CDC): ${lk('Ficha')}\n📄 Pré-contrato de consórcio (CNH): ${lk('Pré')}\n\n🔐 Painel do vendedor: ${lk('Painel')}\nE-mail: ${v.email}\nSenha: ${senha||'(peça uma nova senha ao administrador)'}\n\nPor segurança, troque a senha no primeiro acesso.`}
-let PWS={},PWID=null,PWSHOW=false;
-function perfil(id,senha){
-  const v=VL.find(x=>x.id===id);if(!v)return;PWID=id;PWSHOW=false;if(senha)PWS[id]=senha;
-  modal(`<div class="pf-h"><div class="pf-av">${esc((v.nome||'?').trim().charAt(0).toUpperCase())}</div><div><h2>${esc(v.nome)}</h2><span class="mu">${v.suspenso?'<span class="tg s">SUSPENSO</span>':'<span class="tg">ATIVO</span>'} · cadastrado em ${esc(dtc(v.criado))}</span></div></div>
-  <div class="pf-g"><div><small>E-mail (login)</small><b>${esc(v.email||'—')}</b></div><div><small>Endereço (slug)</small><b>${esc(v.slug)}</b></div><div><small>WhatsApp</small><b>${esc(v.whatsapp||'—')}</b></div><div><small>Motos</small><b>${v.motos}</b></div></div>
-  <p class="mu" style="margin:8px 0 0;font-size:13px">Pedidos e dados: ${v.chat} chat · ${v.fichas} fichas CDC · ${v.contratos} pré-contratos CNH · ${v.contatos} contatos</p>
-  <section class="pf-s"><h3>🔑 Senha do painel</h3>
-   <div class="pwr"><span class="pw" id="pw_v">••••••••</span><button type="button" class="btn sm" id="pw_b1" onclick="pwVer()" disabled>👁 Mostrar</button><button type="button" class="btn sm" id="pw_b2" onclick="pwCopia()" disabled>Copiar</button></div>
-   <p class="pw-i" id="pw_i">Carregando…</p>
-   <label class="l" for="pw_n">Trocar a senha (escreva a nova)</label>
-   <div class="pwn"><input id="pw_n" type="text" autocomplete="off" spellcheck="false" placeholder="Nova senha (mínimo 8 caracteres)"><button type="button" class="btn sm" onclick="pwGerar()">🎲 Gerar</button></div>
-   <button type="button" class="btn red sm" style="color:#fff;background:var(--r)" onclick="pwSalva('${v.id}')">Salvar nova senha</button></section>
-  <section class="pf-s"><h3>Links</h3>${(v.links||[]).map(k=>`<div class="lk"><div><b>${esc(k.etiqueta)}</b><small>${esc(k.endereco)}</small></div><a class="btn sm" href="${esc(k.endereco)}" target="_blank" rel="noopener">Abrir</a><button type="button" class="btn sm" onclick="copiar('${esc(k.endereco)}')">Copiar</button></div>`).join('')}</section>
-  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm" onclick="acessosCp('${v.id}')">Copiar acessos</button>${waLink(v.whatsapp)?`<button type="button" class="btn sm" onclick="acessosWa('${v.id}')">Enviar por WhatsApp</button>`:''}<button type="button" class="btn sm" onclick="suspV('${v.id}',${!v.suspenso})">${v.suspenso?'Reativar site e dados':'Suspender site e dados'}</button><button type="button" class="btn sm" onclick="testarUm('${v.id}')">🧪 Testar entrega</button><button type="button" class="btn sm dg" onclick="excluirV('${v.id}')">🗑 Excluir</button><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
-  pwCarrega(id)}
-async function pwCarrega(id){
-  const r=await sb.rpc('mestre_vendedor_senha',{p_id:id}),i=document.getElementById('pw_i'),b1=document.getElementById('pw_b1'),b2=document.getElementById('pw_b2');
-  if(PWID!==id||!i)return;
-  if(r.error){i.className='pw-i warn';i.textContent='Não foi possível consultar a senha: '+r.error.message+' (rode o SQL atualizado no Supabase).';return}
-  const d=r.data||{};
-  if(!d.tem){PWS[id]=null;i.className='pw-i';i.innerHTML='A senha atual deste vendedor foi criada antes do cofre e <b>não pode ser lida</b> (o Supabase só guarda um código irreversível dela). Escreva uma nova abaixo: <b>a partir daí ela aparece aqui</b>.';return}
-  if(!d.confere){PWS[id]=null;i.className='pw-i warn';i.innerHTML='⚠️ O vendedor trocou a senha por conta própria, então a que estava registrada <b>não vale mais</b>. Escreva uma nova abaixo.';return}
-  PWS[id]=d.senha;b1.disabled=false;b2.disabled=false;i.className='pw-i ok';i.textContent='Senha registrada em '+dtc(d.atualizado_em)+'. É a que o vendedor usa para entrar agora.'}
-function pwVer(){const s=PWS[PWID];if(!s)return;PWSHOW=!PWSHOW;document.getElementById('pw_v').textContent=PWSHOW?s:'••••••••';document.getElementById('pw_v').classList.toggle('on',PWSHOW);document.getElementById('pw_b1').textContent=PWSHOW?'🙈 Ocultar':'👁 Mostrar'}
-function pwCopia(){const s=PWS[PWID];if(s)copiar(s)}
-function pwGerar(){const c='abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',a=new Uint32Array(12);(window.crypto||{getRandomValues:x=>x.forEach((_,i)=>x[i]=Math.random()*4e9)}).getRandomValues(a);document.getElementById('pw_n').value=[...a].map(n=>c[n%c.length]).join('')}
-async function pwSalva(id){
-  const v=VL.find(x=>x.id===id),n=(document.getElementById('pw_n').value||'').trim();
-  if(n.length<8)return toast('A senha precisa ter pelo menos 8 caracteres');if(n.length>72)return toast('A senha pode ter no máximo 72 caracteres');
-  if(!confirm(`Trocar a senha de ${v.nome}? A senha antiga deixa de funcionar.`))return;
-  const r=await sb.rpc('mestre_definir_senha',{p_id:id,p_senha:n});if(r.error)return toast('Erro: '+r.error.message);
-  PWS[id]=n;toast('Senha alterada. O vendedor já pode entrar com a nova senha.');perfil(id)}
-function acessosCp(id){const v=VL.find(x=>x.id===id);if(v)copiar(acessosTxt(v,PWS[id]||null))}
-function acessosWa(id){const v=VL.find(x=>x.id===id);if(v)window.open(waLink(v.whatsapp,acessosTxt(v,PWS[id]||null)),'_blank','noopener')}
-
-/* ---------- excluir vendedor (só aqui no admin geral) ---------- */
-function excluirV(id){
-  const v=VL.find(x=>x.id===id);if(!v)return;const tot=(v.chat||0)+(v.fichas||0)+(v.contratos||0)+(v.contatos||0);
-  modal(`<h2>Excluir ${esc(v.nome)}?</h2><div class="dz"><p><b>Isto não tem volta.</b> Serão apagados para sempre: o <b>login</b>, o site, as <b>${v.motos} motos</b> e <b>${tot} pedido${tot===1?'':'s'}/dado${tot===1?'':'s'} de clientes</b> deste vendedor.</p>
-  <p class="mu" style="margin:0">Se você só quer tirar o site do ar, use <b>Suspender</b>: dá para reativar depois.</p>
-  <label class="l" for="ex_c">Para confirmar, digite o endereço do vendedor: <b>${esc(v.slug)}</b></label><input id="ex_c" autocomplete="off" spellcheck="false" placeholder="${esc(v.slug)}" oninput="exChk('${esc(v.slug)}')"></div>
-  <div class="fl" style="margin-top:14px"><button type="button" class="btn sm dg-b" id="ex_b" disabled onclick="exOk('${v.id}')">Excluir definitivamente</button><button type="button" class="btn sm" onclick="perfil('${v.id}')">Cancelar</button></div>`)}
-function exChk(s){const b=document.getElementById('ex_b');if(b)b.disabled=document.getElementById('ex_c').value.trim().toLowerCase()!==s}
-async function exOk(id){
-  const c=(document.getElementById('ex_c').value||'').trim();
-  const r=await sb.rpc('mestre_excluir_vendedor',{p_id:id,p_confirma:c});if(r.error)return toast('Erro: '+r.error.message);
-  delete PWS[id];fechaMd();toast(r.data||'Vendedor excluído');await carregaV();
-  if(TAB==='vendedores')vendedores();else if(TAB==='ranking')ranking();else if(TAB==='pedidos')pedidos()}
-
-/* ---------- teste de entrega: simula um cliente em cada site e confere o que REALMENTE chegou ---------- */
-const TAG_T='__TESTE_ENTREGA__';
-const uuidT=()=>crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:r&3|8).toString(16)});
-async function testeEntregaV(v){
-  const falhas=[],ck=(n,r)=>{if(r&&r.error)falhas.push(n+': '+r.error.message)};
-  try{
-    const anon=supabase.createClient(SB_URL,SB_KEY,{global:{headers:{'x-vendedor':v.slug}},auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
-    ck('Chat',await anon.rpc('registrar_pedido_chat',{p:{id:uuidT(),completo:true,nome:TAG_T,nome_completo:TAG_T,telefone:'+5568900000000',moto_nome:'TESTE',pagamento:'consorcio',mensagem:'teste de entrega'}}));
-    ck('Formulário',await anon.from('leads').insert({tipo:'teste',nome:TAG_T,telefone:'+5568900000000',moto_nome:'TESTE'}));
-    ck('Preenchimento (financiamento)',await anon.rpc('registrar_rascunho',{p:{id:uuidT(),origem:'financiamento',nome:TAG_T,telefone:'(68) 90000-0000',moto_nome:'TESTE',dados:{nome:TAG_T}}}));
-    ck('Preenchimento (chat)',await anon.rpc('registrar_rascunho',{p:{id:uuidT(),origem:'chat',nome:TAG_T,dados:{nome:TAG_T,etapa:'nome'}}}));
-  }catch(e){falhas.push('Erro inesperado: '+(e&&e.message||e))}
-  return falhas}
-async function rodaTeste(lista){
-  modal(`<h2>🧪 Teste de entrega</h2><p class="mu">Simulando um cliente real em cada site e conferindo se o pedido chegou ao vendedor…</p><div id="te_s"></div><div id="te_r"></div><div class="fl" style="margin-top:12px"><button type="button" class="btn sm" onclick="fechaMd()">Fechar</button></div>`);
-  const out=document.getElementById('te_r'),res=[],draw=()=>{const e=document.getElementById('te_r');if(e)e.innerHTML=res.map(r=>`<div class="te-i ${r.ok===true?'ok':r.ok===false?'er':'su'}"><b>${r.ok===true?'✅':r.ok===false?'❌':'⏸️'} ${esc(r.nome)}</b><small>/${esc(r.slug)}</small><p>${esc(r.det)}</p></div>`).join('')};
-  const ativos=lista.filter(v=>!v.suspenso),imed={};
-  for(const v of lista)if(v.suspenso)res.push({nome:v.nome,slug:v.slug,ok:null,det:'Site suspenso: não foi testado (reative para voltar a receber).'});
-  for(const v of ativos){imed[v.id]=await testeEntregaV(v);res.push({nome:v.nome,slug:v.slug,ok:undefined,det:'testando…'});draw()}
-  const cont=await sb.rpc('mestre_testes_entrega_contagem');
-  if(cont.error){document.getElementById('te_r').innerHTML='<p class="pw-i warn">Não foi possível conferir o que chegou: '+esc(cont.error.message)+' (rode o SQL atualizado no Supabase).</p>';return}
-  const por=Object.fromEntries((cont.data||[]).map(c=>[c.vendedor_id,c])),fin=res.filter(r=>r.ok===null);
-  for(const v of ativos){const c=por[v.id]||{},f=[...(imed[v.id]||[])];
-    if(c.chat!==1)f.push('o pedido do chat NÃO chegou');if(c.lead!==1)f.push('o formulário NÃO chegou');if(c.rasc_fin!==1)f.push('o preenchimento do formulário NÃO chegou');if(c.rasc_chat!==1)f.push('o chat desde a 1ª resposta NÃO chegou');
-    fin.push({nome:v.nome,slug:v.slug,ok:f.length===0,det:f.length?f.join(' · '):'Tudo chegou: pedido do chat, formulário e preenchimentos.'})}
-  res.length=0;fin.sort((a,b)=>(a.ok===false?0:a.ok===true?1:2)-(b.ok===false?0:b.ok===true?1:2)).forEach(r=>res.push(r));
-  const bad=res.filter(r=>r.ok===false).length,good=res.filter(r=>r.ok===true).length;
-  document.getElementById('te_s').innerHTML=`<p class="te-s ${bad?'er':'ok'}">${bad?`⚠️ ${bad} vendedor(es) com falha. Rode o SQL único atualizado no Supabase e teste de novo.`:`✅ Todos os ${good} vendedores ativos estão recebendo.`}</p>`;draw();
-  await sb.rpc('mestre_limpar_testes_entrega')}
-async function testarTodos(){if(!VL.length)await carregaV();rodaTeste(VL)}
-async function testarUm(id){const v=VL.find(x=>x.id===id);if(v)rodaTeste([v])}
-async function redefV(id){const v=VL.find(x=>x.id===id);if(!confirm(`Gerar uma nova senha para ${v.nome}? A senha antiga deixa de funcionar.`))return;
-  const r=await sb.rpc('mestre_redefinir_senha',{p_id:id});if(r.error)return toast('Erro: '+r.error.message);perfil(id,r.data.senha)}
-async function suspV(id,s){const v=VL.find(x=>x.id===id);
-  if(!confirm(s?`Suspender ${v.nome}? O site dele sai do ar, o painel é bloqueado e ele não acessa os dados dos clientes.`:`Reativar ${v.nome}?`))return;
-  const r=await sb.rpc('mestre_suspender_vendedor',{p_id:id,p_suspender:s});if(r.error)return toast('Erro: '+r.error.message);toast(r.data);await carregaV();perfil(id);if(TAB==='vendedores')vendedores();else if(TAB==='ranking')ranking();}
-function novoV(){
-  modal(`<h2>Novo vendedor</h2><p class="mu">O cadastro, o login e o catálogo completo são criados automaticamente.</p>
-  <label class="l" for="nv_n">Nome *</label><input id="nv_n" placeholder="Nome do vendedor">
-  <label class="l" for="nv_e">E-mail (será o login) *</label><input id="nv_e" type="email" placeholder="email@exemplo.com">
-  <label class="l" for="nv_w">WhatsApp</label><input id="nv_w" inputmode="tel" placeholder="(68) 99999-9999">
-  <label class="l" for="nv_s">Nome no endereço do site (opcional)</label><input id="nv_s" placeholder="Ex.: joao-motos  →  o link será …vercel.app/joao-motos" autocapitalize="none" autocomplete="off">
-  <label class="l" for="nv_p">Senha (opcional)</label><input id="nv_p" placeholder="Deixe vazio para gerar uma senha forte">
-  <div class="fl" style="margin-top:14px"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="criarV()">Criar vendedor</button><button class="btn sm" onclick="fechaMd()">Cancelar</button></div>`)}
-async function criarV(){
-  const n=$('#nv_n').value.trim(),e=$('#nv_e').value.trim();if(!n||!e)return toast('Informe nome e e-mail');
-  const r=await sb.rpc('mestre_criar_vendedor',{p_nome:n,p_email:e,p_whatsapp:$('#nv_w').value.trim()||null,p_slug:$('#nv_s').value.trim()||null,p_senha:$('#nv_p').value.trim()||null});
-  if(r.error)return toast(/slug_reservado/.test(r.error.message)?'Esse nome é reservado pelo sistema (api, admin, index...). Escolha outro nome para o endereço.':'Erro: '+r.error.message);
-  const d=r.data;await carregaV();const v=VL.find(x=>x.slug===d.slug)||{nome:d.nome,email:d.email,links:d.links,slug:d.slug,whatsapp:$('#nv_w').value};
-  v.links=d.links;v.email=d.email;
-  modal(`<h2>Vendedor criado ✅</h2><p class="mu">${esc(d.nome)} já tem site, painel e catálogo completo. Copie os acessos e envie a ele:</p>
-  <dl class="dl"><dt>Login</dt><dd>${esc(d.email)}</dd><dt>Senha</dt><dd><b>${esc(d.senha)}</b></dd></dl>
-  ${(d.links||[]).map(k=>`<div class="lk"><div><b>${esc(k.etiqueta)}</b><small>${esc(k.endereco)}</small></div><button class="btn sm" onclick="copiar('${esc(k.endereco)}')">Copiar</button></div>`).join('')}
-  <div class="fl" style="margin-top:14px"><button class="btn red sm" style="color:#fff;background:var(--r)" onclick="copiar(${JSON.stringify(acessosTxt(v,d.senha)).replace(/"/g,'&quot;')})">Copiar acessos</button>
-  ${waLink(v.whatsapp)?`<a class="btn sm" target="_blank" rel="noopener" href="${esc(waLink(v.whatsapp,acessosTxt(v,d.senha)))}">Enviar por WhatsApp</a>`:''}<button class="btn sm" onclick="fechaMd();vendedores()">Fechar</button></div>`)}
-
-/* ---------- pedidos de todos os vendedores ---------- */
-let PD=[],PF={v:'',t:'',q:''};
-const TP={rascunho:'Em andamento (não enviou)',chat:'Chat',ficha:'Ficha CDC',contrato:'Pré-contrato CNH',contato:'Contato'};
-const LB={nome:'Nome',nome_completo:'Nome completo',telefone:'Telefone',email:'E-mail',cpf:'CPF',rg:'RG',rg_emissao:'Emissão do RG',nascimento:'Nascimento',cidade_nascimento:'Cidade de nascimento',pai:'Pai',mae:'Mãe',cep:'CEP',rua:'Rua',numero:'Número',bairro:'Bairro',cidade:'Cidade',estado:'Estado',ref_nome:'Referência',ref_telefone:'Tel. da referência',telefone_recado:'Telefone de recado',ocupacao:'Ocupação',renda:'Renda',entrada:'Entrada',habilitacao:'Habilitação',lance:'Lance',lance_valor:'Valor do lance',moto_nome:'Moto',cor:'Cor',pagamento:'Modalidade',parcela:'Parcela',forma_pagamento:'Forma de pagamento',troca:'Moto na troca',parcelamento_cartao:'Parcelamento',tipo:'Tipo',detalhes:'Detalhes',mensagem:'Mensagem',status:'Status',fase:'Fase da venda (1 a 10)',created_at:'Recebido em',updated_at:'Atualizado em'};
-const SKIP=new Set(['id','moto_id','completo','lgpd_aceite']);
-async function pedidos(){
-  TAB='pedidos';$('#app').innerHTML=head()+'<div class="w"><p class="mu" style="margin-top:20px">Carregando pedidos…</p></div>';
-  if(!VL.length)await carregaV();
-  const r=await sb.rpc('mestre_pedidos',{p_vendedor:PF.v||null,p_tipo:PF.t||null,p_limit:300});if(r.error){toast('Erro: '+r.error.message);return}
-  PD=r.data||[];pedidosView()}
-function pedidosView(){
-  const q=nz(PF.q);const f=PD.filter(x=>!q||nz([x.nome,x.telefone,x.moto,x.vendedor_nome].join(' ')).includes(q));
-  $('#app').innerHTML=head()+`<div class="w"><div class="kp" style="grid-template-columns:repeat(2,1fr)"><div><b>${PD.length}</b><span>pedidos e dados recebidos</span></div><div><b>${new Set(PD.map(x=>x.vendedor_id)).size}</b><span>vendedores com pedidos</span></div></div>
-  <div class="row" style="margin-bottom:8px"><select id="pv" onchange="PF.v=this.value;pedidos()"><option value="">Todos os vendedores</option>${VL.map(v=>`<option value="${v.id}" ${PF.v===v.id?'selected':''}>${esc(v.nome)}</option>`).join('')}</select>
-  <select id="pt" onchange="PF.t=this.value;pedidos()"><option value="">Todos os tipos</option>${Object.entries(TP).map(a=>`<option value="${a[0]}" ${PF.t===a[0]?'selected':''}>${a[1]}</option>`).join('')}</select></div>
-  <input id="pq" type="search" placeholder="Buscar por cliente, telefone, moto ou vendedor" value="${esc(PF.q)}" oninput="PF.q=this.value;pedidosView2()">
-  <div id="pl" style="margin-top:12px">${f.map(pdCard).join('')||'<p class="mu">Nenhum pedido.</p>'}</div></div>`}
-function pedidosView2(){const q=nz(PF.q);$('#pl').innerHTML=PD.filter(x=>!q||nz([x.nome,x.telefone,x.moto,x.vendedor_nome].join(' ')).includes(q)).map(pdCard).join('')||'<p class="mu">Nenhum pedido.</p>'}
-function pdCard(x){
-  const w=waLink(x.telefone),d=x.dados||{};
-  const rows=Object.keys(d).filter(k=>!SKIP.has(k)&&d[k]!==null&&String(d[k]).trim()!=='').map(k=>`<dt>${esc(LB[k]||k)}</dt><dd>${esc(k==='created_at'||k==='updated_at'?dtc(d[k]):d[k])}</dd>`).join('');
-  return `<div class="pd"><div class="t"><b>${esc(x.nome||'Cliente')}</b><span><span class="tg">${esc(x.vendedor_nome)}</span><span class="tg c">${esc(TP[x.tipo]||x.tipo)}</span></span></div>
-  <small>${esc(x.moto||'Moto não informada')}${x.cor?' · '+esc(x.cor):''}${x.pagamento?' · '+esc(x.pagamento):''} · ${esc(dtc(x.criado))}</small>
-  <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600">Ver todos os dados</summary><dl>${rows}</dl></details>
-  <div class="fl">${w?`<a class="btn sm" target="_blank" rel="noopener" href="${esc(w)}">WhatsApp do cliente</a>`:''}<button class="btn sm" onclick="goV('${x.vendedor_id}')">Ver vendedor</button></div></div>`}
-function goV(id){TAB='vendedores';(VL.length?Promise.resolve():carregaV()).then(()=>{perfil(id)})}
-
-/* ---------- ranking ---------- */
-let RD=30;
-async function ranking(){
-  TAB='ranking';$('#app').innerHTML=head()+'<div class="w"><p class="mu" style="margin-top:20px">Carregando ranking…</p></div>';
-  const r=await sb.rpc('mestre_ranking',{p_dias:RD||null});if(r.error){toast('Erro: '+r.error.message);return}
-  const L=r.data||[],mx=Math.max(1,...L.map(x=>x.total));
-  $('#app').innerHTML=head()+`<div class="w"><p class="mu" style="margin-top:14px">Quem mais gerou pedidos e dados de clientes (chat concluído, fichas CDC, pré-contratos CNH e contatos).</p>
-  <div class="fl">${[[7,'7 dias'],[30,'30 dias'],[90,'90 dias'],[0,'Tudo']].map(a=>`<button class="${RD===a[0]?'on':''}" onclick="RD=${a[0]};ranking()">${a[1]}</button>`).join('')}</div>
-  ${L.map((x,i)=>`<div class="rk"><div class="n">${i<3&&x.total>0?['🥇','🥈','🥉'][i]:i+1}</div><div><b>${esc(x.nome)}</b> <small class="mu">/${esc(x.slug)}</small>${x.suspenso?' <span class="tg s">SUSPENSO</span>':''}<div class="b"><i style="width:${Math.round(x.total/mx*100)}%"></i></div>
-  <small class="mu"><b>${x.total}</b> no total · ${x.chat} chat · ${x.fichas} fichas · ${x.contratos} pré-contratos · ${x.contatos} contatos</small></div></div>`).join('')||'<p class="mu">Sem dados.</p>'}</div>`}
-
-/* ---------- atualização diária do site (vendedor.site/shayrondahonda) ---------- */
-const fdt=s=>{try{return new Date(s).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return s}};
-function faixa(){
-  const u=H[0];if(!u)return '<div class="ms">Atualização automática do site: ainda sem nenhuma leitura. Use “Atualizar do site agora”.</div>';
-  const bad=u.status!=='ok';
-  return `<div class="ms" style="${bad?'':'background:var(--cd);border-color:var(--bd);color:var(--tx)'}">${bad?'⚠️ ':'✅ '}Atualização do site: <b>${fdt(u.quando)}</b> — ${bad?esc((u.detalhes&&u.detalhes.motivo)||u.status):`${u.motos_lidas} motos lidas, ${u.motos_alteradas} com valores alterados`}. <a href="#" onclick="hist();return false" style="color:inherit;font-weight:700">Ver histórico</a></div>`}
-async function syncSite(){
-  if(!confirm('Buscar agora os planos no site vendedor.site/shayrondahonda e atualizar o catálogo e todos os vendedores?'))return;
-  toast('Buscando no site…');
-  const a=await sb.rpc('site_sync_manual_iniciar');if(a.error)return toast('Erro: '+a.error.message);
-  let msg='';
-  for(let i=0;i<6;i++){await new Promise(r=>setTimeout(r,SYNC_WAIT));const b=await sb.rpc('site_sync_manual_aplicar');if(b.error)return toast('Erro: '+b.error.message);msg=b.data;if(!/aguardando/i.test(msg))break}
-  alert(msg);load()}
-function hist(){
-  const st={ok:'OK',abortado:'ABORTADA',erro:'ERRO'};
-  $('#app').innerHTML=head('Histórico da atualização do site')+`<div class="w" style="padding-top:14px"><button class="btn sm" onclick="lista()">← Voltar</button><p class="mu">A busca roda sozinha todo dia às 04:00 (Rio Branco).</p>
-  ${H.map(x=>{const d=x.detalhes||{},al=d.alteradas||[],nv=d.novas_no_site||[],fo=d.fora_do_site||[];return `<div class="cd"><b>${fdt(x.quando)} · ${esc(st[x.status]||x.status)}</b><br><span class="mu">${x.motos_lidas} motos lidas · ${x.motos_alteradas} alteradas${d.motivo?' · '+esc(d.motivo):''}</span>
-   ${al.length?`<p><b>Valores alterados:</b> ${al.map(a=>esc(a.moto)).join(', ')}</p>`:''}${nv.length?`<p><b>Motos novas no site (não criadas):</b> ${nv.map(esc).join(', ')}</p>`:''}${fo.length?`<p><b>Do catálogo e fora do site:</b> ${fo.map(esc).join(', ')}</p>`:''}</div>`}).join('')||'<p class="mu">Sem registros.</p>'}</div>`}
-
-/* ---------- editar / criar ---------- */
-const VAZIA=()=>({nome:'',modelo:'',categoria:'Street',selo:'',preco:'',descricao:'',fotos:[],video_url:'',planos:[],emplacamento:'Com emplacamento',cores:[],sync_site:true});
-const norm=m=>({nome:String(m.nome||'').trim(),modelo:String(m.modelo||'').trim(),categoria:String(m.categoria||'').trim(),selo:String(m.selo||'').trim(),
-  preco:m.preco===''||m.preco==null||isNaN(+m.preco)?null:+m.preco,descricao:String(m.descricao||''),fotos:(m.fotos||[]).filter(Boolean),video_url:String(m.video_url||'').trim(),
-  planos:(m.planos||[]).map(p=>({parcelas:+p.parcelas,valor:+p.valor})).filter(p=>p.parcelas>0&&p.valor>0),emplacamento:String(m.emplacamento||'').trim(),cores:(m.cores||[]).map(c=>String(c).trim()).filter(Boolean),sync_site:m.sync_site!==false});
-function novo(){NEW=true;EID=null;E=VAZIA();E0=JSON.stringify(norm(E));form()}
-function edit(id){const m=C.find(x=>x.id===id);NEW=false;EID=id;E=JSON.parse(JSON.stringify({...VAZIA(),...m,preco:m.preco==null?'':m.preco}));E0=JSON.stringify(norm(E));form()}
-function form(){
-  const cats=[...new Set([...CATS0,...C.map(m=>m.categoria).filter(Boolean),E.categoria].filter(Boolean))];
-  $('#app').innerHTML=head(NEW?'Nova moto':'Editando '+esc(E.nome))+`<div class="w" style="padding-top:14px">
-  <button class="btn sm" onclick="${'voltar()'}">← Voltar</button>
-  <div class="cd" style="margin-top:12px"><h2>Dados da moto</h2>
-   <label class="l" for="e_nome">Nome *</label><input id="e_nome" value="${esc(E.nome)}" oninput="E.nome=this.value">
-   <div class="row"><div><label class="l" for="e_mod">Versão / modelo</label><input id="e_mod" value="${esc(E.modelo)}" placeholder="Ex.: ABS, ES, CBS" oninput="E.modelo=this.value"></div>
-   <div><label class="l" for="e_cat">Categoria</label><select id="e_cat" onchange="E.categoria=this.value">${cats.map(c=>`<option ${E.categoria===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div></div>
-   <div class="row"><div><label class="l" for="e_selo">Selo (opcional)</label><input id="e_selo" value="${esc(E.selo)}" oninput="E.selo=this.value"></div>
-   <div><label class="l" for="e_emp">Condição</label><select id="e_emp" onchange="E.emplacamento=this.value"><option ${E.emplacamento==='Com emplacamento'?'selected':''}>Com emplacamento</option><option ${E.emplacamento==='Sem emplacamento'?'selected':''}>Sem emplacamento</option></select></div></div>
-   <div class="row"><div><label class="l" for="e_pre">Preço à vista (R$)</label><input id="e_pre" inputmode="decimal" value="${esc(E.preco)}" placeholder="Ex.: 17900" oninput="E.preco=this.value.replace(',','.')"></div>
-   <div><label class="l" for="e_vid">Vídeo (link, opcional)</label><input id="e_vid" value="${esc(E.video_url)}" oninput="E.video_url=this.value"></div></div></div>
-  <div class="cd"><h2>Cores disponíveis</h2><p class="mu">Só estas cores aparecem para o cliente escolher nos formulários e no chat. Deixe vazio se não quiser limitar.</p>
-   <div id="cores"></div><div class="row" style="grid-template-columns:1fr auto"><input id="nc" placeholder="Ex.: Prata" onkeydown="if(event.key==='Enter'){event.preventDefault();addCor()}"><button class="btn" onclick="addCor()">Adicionar cor</button></div></div>
-  <div class="cd"><h2>Consórcio (planos e parcelas)</h2>${NEW?'':`<label class="ck" style="margin:6px 0 10px"><input type="checkbox" ${E.sync_site!==false?'checked':''} onchange="E.sync_site=this.checked"><span><b>Atualizar estes planos automaticamente do site todo dia</b><br><small class="mu">Desligue se você quiser manter os valores digitados aqui.</small></span></label>`}<p class="mu">Cada linha é uma opção: número de parcelas e valor da parcela.</p>
-   <div id="planos"></div><div class="fl"><button onclick="addPlano()">+ Adicionar plano</button><button onclick="ordenaPlanos()">Ordenar (mais parcelas primeiro)</button></div>
-   <div class="row" style="grid-template-columns:1fr auto;align-items:end"><div><label class="l" for="pct">Reajustar todos os valores em %</label><input id="pct" inputmode="decimal" placeholder="Ex.: 3 ou -2,5"></div><button class="btn" onclick="reajusta()">Aplicar %</button></div></div>
-  <div class="cd"><h2>Fotos</h2><div class="fo" id="fotos"></div>
-   <div class="row" style="grid-template-columns:1fr auto"><input id="nf" placeholder="Colar link de uma foto" onkeydown="if(event.key==='Enter'){event.preventDefault();addFoto()}"><button class="btn" onclick="addFoto()">Adicionar link</button></div>
-   <div style="margin-top:10px"><input id="up" type="file" accept="image/*" multiple onchange="subir(this.files)"><p class="mu">Ou envie do aparelho. A primeira foto é a principal.</p></div></div>
-  <div class="cd"><h2>Descrição / ficha técnica</h2><textarea id="e_desc" oninput="E.descricao=this.value">${esc(E.descricao)}</textarea></div>
-  <div class="bar">${NEW?'':`<label class="ck"><input id="fc" type="checkbox"><span>Forçar em todos os vendedores (sobrescreve também o que o vendedor personalizou)</span></label>`}
-   <button class="btn red" onclick="salvar()">${NEW?'Criar e enviar para todos':'Salvar e atualizar todos'}</button></div></div>`;
-  rCores();rPlanos();rFotos()}
-function voltar(){if(JSON.stringify(norm(E))!==E0&&!confirm('Descartar as alterações?'))return;lista()}
-const rCores=()=>{$('#cores').innerHTML=E.cores.map((c,i)=>`<span class="ch">${esc(c)}<button onclick="E.cores.splice(${i},1);rCores()" aria-label="Remover">×</button></span>`).join('')||'<p class="mu">Nenhuma cor cadastrada.</p>'};
-function addCor(){const v=$('#nc').value.trim();if(!v)return;if(!E.cores.some(c=>nz(c)===nz(v)))E.cores.push(v.charAt(0).toUpperCase()+v.slice(1));$('#nc').value='';rCores()}
-const rPlanos=()=>{$('#planos').innerHTML=E.planos.map((p,i)=>`<div class="pr"><input inputmode="numeric" placeholder="Parcelas" value="${esc(p.parcelas)}" oninput="E.planos[${i}].parcelas=this.value"><input inputmode="decimal" placeholder="Valor da parcela (R$)" value="${esc(p.valor)}" oninput="E.planos[${i}].valor=this.value.replace(',','.')"><button class="btn sm" onclick="E.planos.splice(${i},1);rPlanos()" aria-label="Remover">×</button></div>`).join('')||'<p class="mu">Sem planos: o site mostra “Consulte as condições”.</p>'};
-const addPlano=()=>{E.planos.push({parcelas:'',valor:''});rPlanos()};
-const ordenaPlanos=()=>{E.planos.sort((a,b)=>(+b.parcelas)-(+a.parcelas));rPlanos()};
-function reajusta(){const p=parseFloat(String($('#pct').value).replace(',','.'));if(isNaN(p))return toast('Informe o percentual');
-  E.planos.forEach(x=>{if(+x.valor>0)x.valor=Math.round(+x.valor*(1+p/100)*100)/100});rPlanos();toast('Valores reajustados em '+p+'% (confira antes de salvar)')}
-const rFotos=()=>{$('#fotos').innerHTML=E.fotos.map((u,i)=>`<div><img src="${esc(u)}" alt=""><button class="x" onclick="E.fotos.splice(${i},1);rFotos()" aria-label="Remover">×</button><span class="m"><button onclick="mvf(${i},-1)">←</button><button onclick="mvf(${i},1)">→</button></span></div>`).join('')||'<p class="mu">Sem fotos.</p>'};
-function mvf(i,d){const j=i+d;if(j<0||j>=E.fotos.length)return;[E.fotos[i],E.fotos[j]]=[E.fotos[j],E.fotos[i]];rFotos()}
-function addFoto(){const v=$('#nf').value.trim();if(!/^https?:\/\//i.test(v))return toast('Cole um link que comece com https://');E.fotos.push(v);$('#nf').value='';rFotos()}
-async function subir(files){
-  for(const f of files){const ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg',path='mestre/'+(crypto.randomUUID?crypto.randomUUID():Date.now()+Math.random().toString(16).slice(2))+'.'+ext;
-    const{error}=await sb.storage.from('midia').upload(path,f,{contentType:f.type||'image/jpeg',upsert:false});
-    if(error){toast('Não consegui enviar '+f.name+': '+error.message);continue}
-    E.fotos.push(sb.storage.from('midia').getPublicUrl(path).data.publicUrl)}
-  rFotos();$('#up').value=''}
-async function salvar(){
-  const n=norm(E);if(!n.nome)return toast('Informe o nome da moto');
-  const ruins=(E.planos||[]).filter(p=>(p.parcelas!==''||p.valor!=='')&&!(+p.parcelas>0&&+p.valor>0));if(ruins.length)return toast('Há plano incompleto: preencha parcelas e valor ou remova a linha');
-  if(NEW){const{data,error}=await sb.rpc('mestre_adicionar',{p:n});if(error)return toast('Erro: '+error.message);toast('Moto criada e enviada para todos os vendedores');return load()}
-  const o=JSON.parse(E0),p={};Object.keys(n).forEach(k=>{if(JSON.stringify(n[k])!==JSON.stringify(o[k]))p[k]=n[k]});
-  if(!Object.keys(p).length)return toast('Nada foi alterado');
-  if(p.planos&&n.sync_site&&p.sync_site===undefined&&confirm('Você alterou os planos, mas esta moto está com a atualização automática do site LIGADA: na próxima rodada o site sobrescreve o que você digitou.\n\nOK = desligar a atualização automática desta moto e manter o seu valor.\nCancelar = continuar ligada.'))p.sync_site=false;
-  const forcar=!!($('#fc')&&$('#fc').checked);
-  if(forcar&&!confirm('Forçar sobrescreve também o que os vendedores personalizaram nesses campos. Continuar?'))return;
-  const{data,error}=await sb.rpc('mestre_salvar',{p_id:EID,p,p_forcar:forcar});if(error)return toast('Erro: '+error.message);
-  alert(data);load()}
-sb.auth.getSession().then(r=>r.data&&r.data.session?start():login());
-</script>
-</body>
-</html>
+/* ---------------- ADMIN ---------------- */
+let A=null,tab='dash',seen=null,ap=null;
+function go(h){location.hash=h;route()}
+function route(){const a=location.hash=='#admin';$('site').style.display=a?'none':'';$('adm').style.display=a?'block':'none';document.body.style.overflow='';if(a)admin();else clearInterval(ap)}
+async function admin(){const{data}=await sb.auth.getSession();if(!data.session)return login();await carregar();clearInterval(ap);ap=setInterval(()=>carregar(1),20000)}
+function login(m){$('ad').innerHTML=`<div class="bx" style="margin-top:60px"><h3>Área do dono</h3><p style="color:var(--m);font-size:14px">Acesso restrito.</p><label>E-mail</label><input id="a_e" type="email"><label>Senha</label><input id="a_p" type="password" onkeydown="if(event.key=='Enter')entrar()"><div class="msg ${m?'er':''}">${esc(m||'')}</div><button class="btn" style="width:100%;margin-top:16px" onclick="entrar()">Entrar</button></div>`}
+async function entrar(){const{error}=await sb.auth.signInWithPassword({email:$('a_e').value.trim(),password:$('a_p').value});if(error)return login('E-mail ou senha incorretos.');admin()}
+async function sair(){await sb.auth.signOut();clearInterval(ap);login()}
+async function carregar(q){const{data,error}=await sb.rpc('ps_admin_painel');if(error){if(q)return;await sb.auth.signOut();return login('Esta conta não é a do dono da plataforma.')}
+if(seen!==null&&data.kpis.aprovados>seen){const n=data.pedidos.find(p=>p.status=='pagamento_aprovado');if(n)toast('',`<div class="nt" style="background:var(--s)"><h4>💰 Nova venda!</h4><div style="font-size:14px"><b>${esc(n.dados.nome)}</b> · ${esc(n.dados.loja)}<br>${esc(n.dados.cidade)}-${esc(n.dados.estado)} · ${esc(n.plan_id)} ${esc(n.billing_period)} · ${R(n.amount)}<br>/${esc(n.slug)} · ${esc(n.dados.email)}</div></div>`)}
+seen=data.kpis.aprovados;A=data;if(!q||tab=='dash')pinta()}
+function pinta(){const k=A.kpis,T=(h,rows)=>`<div class="tb"><table><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr>${rows}</table></div>`,d=x=>x?new Date(x).toLocaleDateString('pt-BR'):'-',pill=s=>`<span class="pill ${esc(s)}">${esc(String(s||'-').replace(/_/g,' '))}</span>`;let h='';
+const tabs=[['dash','Dashboard'],['ped','Pedidos'],['cli','Clientes'],['cfg','Configurações']];
+if(tab=='dash')h=`<div class="kp">${[['Vendedores',k.vendedores],['Clientes ativos',k.ativos],['Vencidas',k.vencidas],['Pedidos pendentes',k.pendentes],['Pedidos aprovados',k.aprovados],['Faturamento do mês',R(k.mes)],['Faturamento do ano',R(k.ano)]].map(x=>`<div><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>`;
+if(tab=='ped')h=T(['Data','Cliente','Loja','Plano','Valor','Status','Endereço','ID MP'],A.pedidos.map(p=>`<tr><td>${d(p.created_at)}</td><td>${esc(p.dados.nome)}<br><small>${esc(p.dados.email)}</small></td><td>${esc(p.dados.loja)}</td><td>${esc(p.plan_id)} ${esc(p.billing_period)}</td><td>${R(p.amount)}</td><td>${pill(p.status)}${p.erro?`<br><small>${esc(p.erro)}</small>`:''}</td><td>${esc(p.slug)}</td><td>${esc(p.mp)}</td></tr>`).join(''));
+if(tab=='cli')h=T(['Cliente','WhatsApp','Loja','Endereço','Plano','Status','Vence','Ações'],A.clientes.map(c=>`<tr><td>${esc(c.name)}<br><small>${esc(c.email)}</small></td><td>${esc(c.phone)}</td><td>${esc(c.dealership)}<br><small>${esc(c.city)}-${esc(c.state)}</small></td><td>${esc(c.slug)}</td><td>${esc(c.plan_id)} ${esc(c.billing_period)}</td><td>${pill(c.suspenso?'suspensa':c.status)}</td><td>${d(c.expires_at)}</td><td>${c.slug?`<button class="mini" onclick="acao({acao:'suspender',slug:'${esc(c.slug)}',valor:${!c.suspenso}})">${c.suspenso?'Reativar':'Suspender'}</button>`:''}<button class="mini" onclick="nsenha('${esc(c.email)}')">Nova senha</button></td></tr>`).join(''));
+if(tab=='cfg')h=`<div class="grid"><div class="card"><h3>Mercado Pago</h3><p style="color:var(--m);font-size:14px">Status: ${A.config.mp?'<b style="color:var(--ok)">token configurado</b>':'<b style="color:var(--er)">token ausente</b>'}</p><label>Access Token (APP_USR-...)</label><input id="tk" type="password" placeholder="cole aqui e salve"><div style="margin-top:12px"><button class="btn" onclick="acao({acao:'token',valor:$('tk').value}).then(()=>{$('tk').value='';carregar()})">Salvar token</button> <button class="btn o" onclick="acao({acao:'testar'}).then(r=>toast(r.ok?'Conectado: '+r.conta:'Falhou: '+r.conta))">Testar</button></div><p style="color:var(--m);font-size:12px;margin-top:12px">O webhook já é enviado em cada cobrança. Se o cliente fechar a página, o sistema ativa pelo webhook ou ao clicar abaixo.</p><button class="btn o" style="margin-top:8px" onclick="acao({acao:'reverificar'}).then(r=>{toast(r.verificados+' pedidos verificados');carregar()})">Reverificar pendentes</button></div>
+${A.planos.map(p=>`<div class="card"><h3>Plano ${esc(p.name)}</h3><label>Mensal (R$)</label><input id="m_${esc(p.id)}" type="number" step="0.01" value="${p.monthly_price}"><label>Anual (R$)</label><input id="a_${esc(p.id)}" type="number" step="0.01" value="${p.annual_price}"><button class="btn" style="margin-top:12px" onclick="acao({acao:'plano',id:'${esc(p.id)}',mensal:$('m_${esc(p.id)}').value,anual:$('a_${esc(p.id)}').value}).then(()=>{toast('Preços salvos');load()})">Salvar</button></div>`).join('')}</div>`;
+$('ad').innerHTML=`<div class="tabs">${tabs.map(t=>`<button class="${tab==t[0]?'on':''}" onclick="tab='${t[0]}';pinta()">${t[1]}</button>`).join('')}</div>${h}`}
+async function acao(p){const{data,error}=await sb.rpc('ps_admin_acao',{p});if(error){toast(error.message);throw error}if(p.acao=='suspender')carregar();return data}
+async function nsenha(e){if(!confirm('Gerar nova senha para '+e+'?'))return;const r=await acao({acao:'senha',email:e});toast('',`<div class="nt" style="background:var(--s)"><h4>Nova senha</h4><div class="kv"><span>${esc(e)}</span><b>${esc(r.senha)}</b><button onclick="cop(0,'${esc(r.senha)}')">copiar</button></div></div>`)}
+window.addEventListener('hashchange',route);load();route();
+</script></body></html>
